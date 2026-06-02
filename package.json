@@ -6,7 +6,7 @@
     "build:css":    "tailwindcss -i ./css/input.css -o ./css/output.css --minify",
     "build:lucide": "node build-lucide.js",
     "build:html":   "node build.js",
-    "build":        "npm run build:html && npm run build:css",
+    "build":        "npm run build:lucide && npm run build:html && npm run build:css",
     "watch:css":    "tailwindcss -i ./css/input.css -o ./css/output.css --watch"
   },
   "devDependencies": {

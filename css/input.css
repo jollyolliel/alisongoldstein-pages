@@ -65,6 +65,11 @@
   transition-duration: 0.3s !important;
 }
 
+/* Areas of Focus card hover lift — uses transform (not translate) to stay in transition scope */
+#quick-services-grid .reveal.visible:hover {
+  transform: translateY(-0.5rem);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal, .reveal-left, .reveal-right {
     opacity: 1 !important;
