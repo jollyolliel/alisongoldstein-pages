@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found | Alison Goldstein</title>
+    <meta name="description" content="Page not found. Return to Alison Goldstein's homepage." />
+    <link rel="icon" href="/images/tree.png" type="image/png" />
+    <link rel="stylesheet" href="/css/output.css" />
+    <script src="/js/site.js"></script>
+    <script defer src="/js/lucide.min.js"></script>
+    <script src="/js/instantpage.min.js" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
+
+    <link rel="preload" href="/fonts/lato-300.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/lato-700.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/playfair-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/playfair-600.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/playfair-700.woff2" as="font" type="font/woff2" crossorigin />
+
+    <style>
+        @font-face { font-family: "Lato"; src: url("/fonts/lato-300.woff2") format("woff2"); }
+        @font-face { font-family: "Lato"; font-weight: 400; src: url("/fonts/lato-400.woff2") format("woff2"); }
+        @font-face { font-family: "Lato"; font-weight: 700; src: url("/fonts/lato-700.woff2") format("woff2"); }
+        @font-face { font-family: "Playfair Display"; src: url("/fonts/playfair-400.woff2") format("woff2"); }
+        @font-face { font-family: "Playfair Display"; font-weight: 600; src: url("/fonts/playfair-600.woff2") format("woff2"); }
+        @font-face { font-family: "Playfair Display"; font-weight: 700; src: url("/fonts/playfair-700.woff2") format("woff2"); }
+
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob { animation: blob 7s infinite; }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-4000 { animation-delay: 4s; }
+    </style>
+</head>
+
+<body class="bg-brand-beige text-brand-primary antialiased selection:bg-brand-accent selection:text-white flex flex-col min-h-screen">
+    <header id="main-header" class="fixed w-full z-50 transition-all duration-500 py-4 header-scrolled">
+  <div class="container mx-auto px-6 flex justify-between items-center">
+    <a href="/" class="font-serif text-2xl font-bold tracking-tight cursor-pointer z-50 text-brand-dark">Alison Goldstein</a>
+    <nav class="hidden md:flex items-center gap-8">
+      <div id="desktop-nav-links" class="flex gap-8">
+        <a href="/" class="nav-link-btn text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:text-brand-accent relative group cursor-pointer text-slate-600">Home<span class="absolute -bottom-2 left-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full w-0"></span></a>
+        <a href="/about/" class="nav-link-btn text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:text-brand-accent relative group cursor-pointer text-slate-600">About<span class="absolute -bottom-2 left-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full w-0"></span></a>
+        <a href="/packages/" class="nav-link-btn text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:text-brand-accent relative group cursor-pointer text-slate-600">Packages<span class="absolute -bottom-2 left-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full w-0"></span></a>
+        <a href="/business/" class="nav-link-btn text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:text-brand-accent relative group cursor-pointer text-slate-600">Business<span class="absolute -bottom-2 left-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full w-0"></span></a>
+        <a href="/articles/" class="nav-link-btn text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:text-brand-accent relative group cursor-pointer text-slate-600">Articles<span class="absolute -bottom-2 left-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full w-0"></span></a>
+        <a href="/reading/" class="nav-link-btn text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:text-brand-accent relative group cursor-pointer text-slate-600">Reading<span class="absolute -bottom-2 left-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full w-0"></span></a>
+      </div>
+      <a href="/contact/" class="ml-4 px-6 py-2.5 rounded font-semibold tracking-widest text-xs uppercase bg-brand-dark text-white hover:bg-brand-accent transition-all duration-300">Contact</a>
+    </nav>
+    <button class="md:hidden p-2 z-50 cursor-pointer" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+      <i data-lucide="menu" id="menu-icon" class="text-brand-dark w-6 h-6"></i>
+    </button>
+  </div>
+  <div id="mobile-menu" class="fixed inset-0 bg-white z-40 transform transition-transform duration-500 ease-in-out translate-x-full md:hidden flex flex-col items-center justify-center gap-1">
+    <div id="mobile-nav-links" class="flex flex-col gap-7 text-center mb-10">
+      <a href="/" class="text-2xl font-serif cursor-pointer text-brand-dark hover:text-brand-accent">Home</a>
+      <a href="/about/" class="text-2xl font-serif cursor-pointer text-brand-dark hover:text-brand-accent">About</a>
+      <a href="/packages/" class="text-2xl font-serif cursor-pointer text-brand-dark hover:text-brand-accent">Packages</a>
+      <a href="/business/" class="text-2xl font-serif cursor-pointer text-brand-dark hover:text-brand-accent">Business</a>
+      <a href="/articles/" class="text-2xl font-serif cursor-pointer text-brand-dark hover:text-brand-accent">Articles</a>
+      <a href="/reading/" class="text-2xl font-serif cursor-pointer text-brand-dark hover:text-brand-accent">Reading</a>
+    </div>
+    <a href="/contact/" class="px-8 py-3 rounded font-semibold tracking-widest text-xs uppercase bg-brand-dark text-white hover:bg-brand-accent transition-all duration-300">Contact</a>
+  </div>
+</header>
+
+    <main class="flex-grow flex items-center justify-center relative overflow-hidden bg-slate-50 min-h-[80vh] pt-32 pb-64">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-beige rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
+            <div class="absolute top-1/3 right-1/4 w-72 h-72 bg-brand-gold/10 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
+            <div class="absolute bottom-1/4 left-1/3 w-72 h-72 bg-brand-accent/5 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-4000"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center mb-32">
+            <h1 class="font-serif text-8xl md:text-9xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-brand-gold drop-shadow-sm">404</h1>
+            <h2 class="font-serif text-3xl md:text-4xl text-brand-dark mb-6">Page Not Found</h2>
+            <div class="w-16 h-1 bg-brand-accent mx-auto mb-8"></div>
+            <p class="text-lg text-slate-600 mb-10 max-w-lg mx-auto leading-relaxed">It looks like this page has ventured off the map. Let's get you back on your journey.</p>
+            <a href="/" class="px-24 py-4 rounded-lg font-bold transition-all duration-300 tracking-widest text-lg uppercase bg-brand-dark text-white hover:bg-brand-accent hover:shadow-2xl inline-flex items-center gap-3 group">
+                <i data-lucide="home" class="w-6 h-6 group-hover:-translate-y-1 transition-transform"></i>
+                Return Home
+            </a>
+        </div>
+    </main>
+
+    <footer id="main-footer" class="bg-brand-primary text-white footer-pattern">
+  <div class="container mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-4 gap-12 mb-12">
+      <div class="md:col-span-2">
+        <h2 class="font-serif text-3xl mb-2">Alison Goldstein</h2>
+        <p class="text-brand-accent text-xs font-bold uppercase tracking-widest mb-4">Global Leadership &amp; Transition Coach</p>
+        <p class="text-slate-400 text-sm leading-relaxed max-w-sm mb-6">Partnering with individuals and organizations worldwide to navigate change, build resilience, and foster leadership that transcends borders.</p>
+        <div class="flex gap-3">
+          <a href="https://www.linkedin.com/in/coach-alison-goldstein" aria-label="LinkedIn" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent cursor-pointer transition-all duration-300">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-white" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="mailto:coach@alisongoldstein.com" aria-label="Email" rel="noopener" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent cursor-pointer transition-all duration-300">
+            <i data-lucide="mail" class="w-4 h-4 text-white"></i>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-bold uppercase tracking-widest text-xs mb-6 text-brand-accent">Navigation</h4>
+        <ul class="space-y-3 text-sm text-slate-400">
+          <li><a href="/about/"    class="hover:text-white transition-colors">About</a></li>
+          <li><a href="/packages/" class="hover:text-white transition-colors">Services</a></li>
+          <li><a href="/business/" class="hover:text-white transition-colors">Business</a></li>
+          <li><a href="/articles/" class="hover:text-white transition-colors">Articles</a></li>
+          <li><a href="/contact/"  class="hover:text-white transition-colors">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold uppercase tracking-widest text-xs mb-6 text-brand-accent">Legal</h4>
+        <ul class="space-y-3 text-sm text-slate-400">
+          <li><a href="/privacy/" class="hover:text-white transition-colors">Privacy Policy</a></li>
+          <li><a href="/terms/"   class="hover:text-white transition-colors">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+      <p class="text-slate-500 text-xs">© 2025 Alison Goldstein. All rights reserved.</p>
+      <div class="flex gap-5 items-center">
+        <img src="/images/CPC-Badge.webp"    alt="iPEC CPC Certified Coach"        loading="lazy" class="h-16 opacity-50 hover:opacity-90 transition-opacity" />
+        <img src="/images/ELI-MP-Badge.webp" alt="ELI Master Practitioner"         loading="lazy" class="h-16 opacity-50 hover:opacity-90 transition-opacity" />
+        <img src="/images/PCC_Visual.webp"   alt="ICF PCC Certified"               loading="lazy" class="h-16 opacity-50 hover:opacity-90 transition-opacity" />
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        initSiteNav("", true);
+        initLucide();
+      });
+    </script>
+</body>
+</html>

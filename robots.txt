@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /templates/
+
+Sitemap: https://www.alisongoldstein.com/sitemap.xml

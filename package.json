@@ -1,0 +1,17 @@
+{
+  "name": "alisongoldstein-static",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:css":    "tailwindcss -i ./css/input.css -o ./css/output.css --minify",
+    "build:lucide": "node build-lucide.js",
+    "build:html":   "node build.js",
+    "build":        "npm run build:html && npm run build:css",
+    "watch:css":    "tailwindcss -i ./css/input.css -o ./css/output.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "lucide": "^1.17.0",
+    "tailwindcss": "^4.1.18"
+  }
+}

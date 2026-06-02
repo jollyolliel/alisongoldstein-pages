@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Header Template | Alison Goldstein [TEMPLATE ONLY]</title>
+</head>
+<body>
+<!--
+  TEMPLATE: header
+  Used by build.js to stamp a canonical header into every page.
+  Variables substituted by build.js:
+    {{HEADER_CLASS}}   — "py-4 header-scrolled" (inner) or "py-6 bg-transparent" (home)
+    {{ACTIVE_HOME}}    — "text-brand-accent" or "text-slate-600"
+    {{ACTIVE_PACKAGES}}
+    {{ACTIVE_BUSINESS}}
+    {{ACTIVE_ABOUT}}
+    {{ACTIVE_ARTICLES}}
+    {{ACTIVE_READING}}
+    {{UNDERLINE_HOME}}    — "w-full" or "w-0"
+    {{UNDERLINE_PACKAGES}}
+    {{UNDERLINE_BUSINESS}}
+    {{UNDERLINE_ABOUT}}
+    {{UNDERLINE_ARTICLES}}
+    {{UNDERLINE_READING}}
+    {{MOBILE_HOME}}    — "text-brand-accent" or "text-brand-dark hover:text-brand-accent"
+    {{MOBILE_PACKAGES}}
+    {{MOBILE_BUSINESS}}
+    {{MOBILE_ABOUT}}
+    {{MOBILE_ARTICLES}}
+    {{MOBILE_READING}}
+-->
+
+<!-- SNIPPET_START -->
+<header id="main-header" class="fixed w-full z-50 transition-all duration-500 {{HEADER_CLASS}}">
+  <div class="container mx-auto px-6 flex justify-between items-center">
+    <a href="/" class="font-serif text-2xl font-bold tracking-tight cursor-pointer z-50 text-brand-dark">Alison Goldstein</a>
+    <nav class="hidden md:flex items-center gap-8">
+      <div id="desktop-nav-links" class="flex gap-8">
+        <a href="/" class="nav-link-btn text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:text-brand-accent relative group cursor-pointer {{ACTIVE_HOME}}">Home<span class="absolute -bottom-2 left-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full {{UNDERLINE_HOME}}"></span></a>
+        <a href="/about/" class="nav-link-btn text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:text-brand-accent relative group cursor-pointer {{ACTIVE_ABOUT}}">About<span class="absolute -bottom-2 left-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full {{UNDERLINE_ABOUT}}"></span></a>
+        <a href="/packages/" class="nav-link-btn text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:text-brand-accent relative group cursor-pointer {{ACTIVE_PACKAGES}}">Packages<span class="absolute -bottom-2 left-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full {{UNDERLINE_PACKAGES}}"></span></a>
+        <a href="/business/" class="nav-link-btn text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:text-brand-accent relative group cursor-pointer {{ACTIVE_BUSINESS}}">Business<span class="absolute -bottom-2 left-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full {{UNDERLINE_BUSINESS}}"></span></a>
+        <a href="/articles/" class="nav-link-btn text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:text-brand-accent relative group cursor-pointer {{ACTIVE_ARTICLES}}">Articles<span class="absolute -bottom-2 left-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full {{UNDERLINE_ARTICLES}}"></span></a>
+        <a href="/reading/" class="nav-link-btn text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:text-brand-accent relative group cursor-pointer {{ACTIVE_READING}}">Reading<span class="absolute -bottom-2 left-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full {{UNDERLINE_READING}}"></span></a>
+      </div>
+      <a href="/contact/" class="ml-4 px-6 py-2.5 rounded font-semibold tracking-widest text-xs uppercase bg-brand-dark text-white hover:bg-brand-accent transition-all duration-300">Contact</a>
+    </nav>
+    <button class="md:hidden p-2 z-50 cursor-pointer" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+      <i data-lucide="menu" id="menu-icon" class="text-brand-dark w-6 h-6"></i>
+    </button>
+  </div>
+  <div id="mobile-menu" class="fixed inset-0 bg-white z-40 transform transition-transform duration-500 ease-in-out translate-x-full md:hidden flex flex-col items-center justify-center gap-1">
+    <div id="mobile-nav-links" class="flex flex-col gap-7 text-center mb-10">
+      <a href="/" class="text-2xl font-serif cursor-pointer {{MOBILE_HOME}}">Home</a>
+      <a href="/about/" class="text-2xl font-serif cursor-pointer {{MOBILE_ABOUT}}">About</a>
+      <a href="/packages/" class="text-2xl font-serif cursor-pointer {{MOBILE_PACKAGES}}">Packages</a>
+      <a href="/business/" class="text-2xl font-serif cursor-pointer {{MOBILE_BUSINESS}}">Business</a>
+      <a href="/articles/" class="text-2xl font-serif cursor-pointer {{MOBILE_ARTICLES}}">Articles</a>
+      <a href="/reading/" class="text-2xl font-serif cursor-pointer {{MOBILE_READING}}">Reading</a>
+    </div>
+    <a href="/contact/" class="px-8 py-3 rounded font-semibold tracking-widest text-xs uppercase bg-brand-dark text-white hover:bg-brand-accent transition-all duration-300">Contact</a>
+  </div>
+</header>
+<!-- SNIPPET_END -->
+
+</body>
+</html>
