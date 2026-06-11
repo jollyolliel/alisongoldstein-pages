@@ -1,1 +1,15 @@
 /admin/*    /admin-login/  301
+
+# Defense-in-depth: 404 build/source files even if the host ever serves
+# the repo root instead of deployable/ (deploy.js excludes these already).
+/build.js            /404.html  404
+/build-lucide.js     /404.html  404
+/build/*             /404.html  404
+/admin-src/*         /404.html  404
+/shared/*            /404.html  404
+/templates/*         /404.html  404
+/login-template/*    /404.html  404
+/cms.config.json     /404.html  404
+/package.json        /404.html  404
+/package-lock.json   /404.html  404
+/css/input.css       /404.html  404

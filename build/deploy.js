@@ -6,8 +6,11 @@
  * Source/tooling files never get copied, so they aren't reachable on the
  * deployed site even if the host serves the whole repo:
  *   build.js, build-lucide.js, build/, admin-src/, shared/, templates/,
- *   login-template/, content.json, cms-schema.json, cms.config.json,
- *   css/input.css, package.json, package-lock.json, image.png
+ *   login-template/, cms.config.json, css/input.css, package.json,
+ *   package-lock.json, image.png
+ *
+ * content.json and cms-schema.json ARE included — the admin editor
+ * fetches both live from the deployed site (see admin-src/core.js).
  *
  * Point the host's "build output directory" at deployable/.
  */
@@ -19,7 +22,10 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'deployable');
 
-const FILES = ['index.html', '404.html', '_headers', '_redirects', 'robots.txt', 'sitemap.xml'];
+const FILES = [
+  'index.html', '404.html', '_headers', '_redirects', 'robots.txt', 'sitemap.xml',
+  'content.json', 'cms-schema.json',
+];
 
 const DIRS = [
   'about', 'admin-login', 'article-1', 'article-2', 'article-3', 'article-4',
@@ -44,4 +50,9 @@ for (const dir of DIRS) {
 fs.mkdirSync(path.join(OUT, 'css'), { recursive: true });
 fs.copyFileSync(path.join(ROOT, 'css', 'output.css'), path.join(OUT, 'css', 'output.css'));
 
-console.log('deployable/ assembled — public site files only.');
+console.log('deployable/ assembled — public site files only.\n');
+
+const entries = fs.readdirSync(OUT, { recursive: true })
+  .map(p => p.replace(/\\/g, '/'))
+  .sort();
+for (const entry of entries) console.log(entry);
