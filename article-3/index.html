@@ -155,7 +155,7 @@
 </header>
 
     <main class="flex-grow pt-0">
-      <div class="flex flex-col lg:flex-row min-h-screen">
+      <div class="flex flex-col lg:flex-row min-h-screen" data-cms-section="article" data-cms-label="Article">
         <div
           class="w-full lg:w-7/12 xl:w-2/3 px-6 md:px-12 lg:px-24 py-24 lg:py-32 order-2 lg:order-1 bg-white"
         >
@@ -187,22 +187,23 @@
               <div class="flex items-center gap-4 mb-6">
                 <span
                   id="detail-category"
+                  data-cms="article3_category"
                   class="text-brand-accent text-xs font-bold uppercase tracking-widest px-2 py-1 bg-brand-beige rounded-sm"
                   >Expat Life</span
                 >
                 <span class="w-1 h-1 rounded-full bg-slate-300"></span>
                 <span
                   id="detail-date"
+                  data-cms="article3_date"
                   class="text-slate-400 text-xs font-bold uppercase tracking-widest"
                   >August 15, 2023</span
                 >
               </div>
               <h1
                 id="detail-title"
+                data-cms="article3_title"
                 class="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-dark leading-[1.1] mb-8"
-              >
-                Top 10 Tips for Expats: How to Thrive
-              </h1>
+              >Top 10 Tips for Expats: How to Thrive</h1>
 
               <div class="flex items-center border-b border-slate-100 pb-8">
                 <div
@@ -228,9 +229,10 @@
             <!-- Content Area -->
             <div
               id="detail-content"
+              data-cms-html="article3_body"
+              data-cms-label="Article Body"
               class="text-slate-600 text-lg leading-loose mb-16 space-y-8"
-            >
-              <p
+            ><p
                 class="entry-animate drop-cap mb-6 text-xl md:text-2xl font-light leading-relaxed text-slate-700"
                 style="animation-delay: 0.25s"
               >
@@ -1167,8 +1169,7 @@
                     you to give them a sense of who you really are?"
                   </p>
                 </div>
-              </div>
-            </div>
+              </div></div>
 
             <div
               class="bg-brand-warm p-8 rounded-xl border-l-4 border-brand-accent entry-animate"
@@ -1240,8 +1241,11 @@
         >
           <img
             id="detail-image"
+            data-cms-img="article3_image"
+            data-cms-attr="alt:article3_title"
+            data-cms-img-max="1600"
             src="/images/photo-1529156069898-49953e39b3ac.webp"
-            alt="Article image"
+            alt="Top 10 Tips for Expats: How to Thrive"
             loading="eager"
             class="w-full h-full object-cover"
           />

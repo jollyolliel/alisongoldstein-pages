@@ -74,53 +74,74 @@
         <div class="container mx-auto px-6">
 
           <!-- Page header -->
-          <div class="mb-16 text-center reveal">
+          <div class="mb-16 text-center reveal" data-cms-section="reading-header" data-cms-label="Page Header">
             <div class="flex items-center justify-center gap-3 mb-4">
               <div class="h-px w-8 bg-brand-accent/40 rounded-full"></div>
-              <span class="text-xs font-bold uppercase tracking-widest text-brand-accent">Recommended</span>
+              <span class="text-xs font-bold uppercase tracking-widest text-brand-accent" data-cms="reading_eyebrow">Recommended</span>
               <div class="h-px w-8 bg-brand-accent/40 rounded-full"></div>
             </div>
-            <h1 class="font-serif text-4xl md:text-5xl text-brand-dark mb-4">Reading List</h1>
-            <p class="text-slate-500 max-w-lg mx-auto leading-relaxed">Books that have shaped my coaching philosophy and that I frequently recommend to clients.</p>
+            <h1 class="font-serif text-4xl md:text-5xl text-brand-dark mb-4" data-cms="reading_heading">Reading List</h1>
+            <p class="text-slate-500 max-w-lg mx-auto leading-relaxed" data-cms="reading_subtext">Books that have shaped my coaching philosophy and that I frequently recommend to clients.</p>
           </div>
 
           <!-- Books grid -->
-          <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div
+            class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto cms-stagger"
+            data-cms-list="books"
+            data-cms-label="Books"
+            data-cms-types="desc:textarea"
+            data-cms-min="1"
+            data-cms-max="12"
+          >
+            <template data-cms-template>
+              <div class="reveal group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-100 hover:border-brand-accent/20 transition-all duration-300 flex flex-col">
+                <div class="h-64 overflow-hidden bg-slate-100">
+                  <img src="{{image}}" alt="{{title}} book cover" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-cms-img-max="600" />
+                </div>
+                <div class="p-7 flex flex-col flex-grow">
+                  <p class="text-brand-accent text-xs font-bold uppercase tracking-wider mb-2">{{author}}</p>
+                  <h2 class="font-serif text-xl text-brand-dark mb-3 leading-snug">{{title}}</h2>
+                  <p class="text-slate-500 text-sm leading-relaxed flex-grow">{{desc}}</p>
+                </div>
+              </div>
+            </template>
 
-            <div class="reveal delay-100 group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-100 hover:border-brand-accent/20 transition-all duration-300 flex flex-col">
-              <div class="h-64 overflow-hidden bg-slate-100">
-                <img src="/images/reading1.webp" alt="The Power of Habit book cover" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div data-cms-item="0" class="reveal group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-100 hover:border-brand-accent/20 transition-all duration-300 flex flex-col">
+                <div class="h-64 overflow-hidden bg-slate-100">
+                  <img src="/images/reading1.webp" alt="The Power of Habit book cover" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-cms-img-max="600" />
+                </div>
+                <div class="p-7 flex flex-col flex-grow">
+                  <p class="text-brand-accent text-xs font-bold uppercase tracking-wider mb-2">Charles Duhigg</p>
+                  <h2 class="font-serif text-xl text-brand-dark mb-3 leading-snug">The Power of Habit</h2>
+                  <p class="text-slate-500 text-sm leading-relaxed flex-grow">Delves into how habits emerge within individual lives and is based on hundreds of interviews, and thousands more papers and studies.</p>
+                </div>
               </div>
-              <div class="p-7 flex flex-col flex-grow">
-                <p class="text-brand-accent text-xs font-bold uppercase tracking-wider mb-2">Charles Duhigg</p>
-                <h2 class="font-serif text-xl text-brand-dark mb-3 leading-snug">The Power of Habit</h2>
-                <p class="text-slate-500 text-sm leading-relaxed flex-grow">Delves into how habits emerge within individual lives and is based on hundreds of interviews, and thousands more papers and studies.</p>
-              </div>
-            </div>
+            
 
-            <div class="reveal delay-200 group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-100 hover:border-brand-accent/20 transition-all duration-300 flex flex-col">
-              <div class="h-64 overflow-hidden bg-slate-100">
-                <img src="/images/reading2.webp" alt="The Confidence Gap book cover" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div data-cms-item="1" class="reveal group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-100 hover:border-brand-accent/20 transition-all duration-300 flex flex-col">
+                <div class="h-64 overflow-hidden bg-slate-100">
+                  <img src="/images/reading2.webp" alt="The Confidence Gap book cover" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-cms-img-max="600" />
+                </div>
+                <div class="p-7 flex flex-col flex-grow">
+                  <p class="text-brand-accent text-xs font-bold uppercase tracking-wider mb-2">Dr. Russ Harris</p>
+                  <h2 class="font-serif text-xl text-brand-dark mb-3 leading-snug">The Confidence Gap</h2>
+                  <p class="text-slate-500 text-sm leading-relaxed flex-grow">An insightful read for those who want to work on increasing confidence. The ideas are based on Acceptance and Commitment Training (ACT).</p>
+                </div>
               </div>
-              <div class="p-7 flex flex-col flex-grow">
-                <p class="text-brand-accent text-xs font-bold uppercase tracking-wider mb-2">Dr. Russ Harris</p>
-                <h2 class="font-serif text-xl text-brand-dark mb-3 leading-snug">The Confidence Gap</h2>
-                <p class="text-slate-500 text-sm leading-relaxed flex-grow">An insightful read for those who want to work on increasing confidence. The ideas are based on Acceptance and Commitment Training (ACT).</p>
-              </div>
-            </div>
+            
 
-            <div class="reveal delay-300 group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-100 hover:border-brand-accent/20 transition-all duration-300 flex flex-col">
-              <div class="h-64 overflow-hidden bg-slate-100">
-                <img src="/images/reading3.webp" alt="Working Identity book cover" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div data-cms-item="2" class="reveal group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-100 hover:border-brand-accent/20 transition-all duration-300 flex flex-col">
+                <div class="h-64 overflow-hidden bg-slate-100">
+                  <img src="/images/reading3.webp" alt="Working Identity book cover" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-cms-img-max="600" />
+                </div>
+                <div class="p-7 flex flex-col flex-grow">
+                  <p class="text-brand-accent text-xs font-bold uppercase tracking-wider mb-2">Herminia Ibarra</p>
+                  <h2 class="font-serif text-xl text-brand-dark mb-3 leading-snug">Working Identity</h2>
+                  <p class="text-slate-500 text-sm leading-relaxed flex-grow">A must read for anyone contemplating changing careers to attain greater congruence between what they do and who they are.</p>
+                </div>
               </div>
-              <div class="p-7 flex flex-col flex-grow">
-                <p class="text-brand-accent text-xs font-bold uppercase tracking-wider mb-2">Herminia Ibarra</p>
-                <h2 class="font-serif text-xl text-brand-dark mb-3 leading-snug">Working Identity</h2>
-                <p class="text-slate-500 text-sm leading-relaxed flex-grow">A must read for anyone contemplating changing careers to attain greater congruence between what they do and who they are.</p>
-              </div>
-            </div>
-
-          </div>
+            
+</div>
         </div>
       </section>
     </main>

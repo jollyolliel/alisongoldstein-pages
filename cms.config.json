@@ -1,0 +1,49 @@
+{
+  "siteName": "Alison Goldstein",
+
+  "repo": {
+    "owner": "jollyolliel",
+    "name": "alisongoldstein-pages",
+    "branch": "main",
+    "pathPrefix": ""
+  },
+
+  "contentFile": "content.json",
+  "schemaFile": "cms-schema.json",
+
+  "imagesDir": "images",
+
+  "urlRoot": "/",
+
+  "devServerUrl": "http://127.0.0.1:5500",
+
+  "pages": [
+    { "id": "home",     "path": "index.html",          "url": "",          "label": "Home" },
+    { "id": "packages", "path": "packages/index.html", "url": "packages/", "label": "Packages" },
+    { "id": "business", "path": "business/index.html", "url": "business/", "label": "Business" },
+    { "id": "about",    "path": "about/index.html",    "url": "about/",    "label": "About" },
+    { "id": "articles", "path": "articles/index.html", "url": "articles/", "label": "Articles" },
+    { "id": "reading",  "path": "reading/index.html",  "url": "reading/",  "label": "Reading" },
+    { "id": "contact",  "path": "contact/index.html",  "url": "contact/",  "label": "Contact" },
+    { "id": "article1", "path": "article-1/index.html", "url": "article-1/", "label": "Article 1" },
+    { "id": "article2", "path": "article-2/index.html", "url": "article-2/", "label": "Article 2" },
+    { "id": "article3", "path": "article-3/index.html", "url": "article-3/", "label": "Article 3" },
+    { "id": "article4", "path": "article-4/index.html", "url": "article-4/", "label": "Article 4" },
+    { "id": "article5", "path": "article-5/index.html", "url": "article-5/", "label": "Article 5" },
+    { "id": "article6", "path": "article-6/index.html", "url": "article-6/", "label": "Article 6" },
+    { "id": "privacy",  "path": "privacy/index.html",  "url": "privacy/",  "label": "Privacy" },
+    { "id": "terms",    "path": "terms/index.html",    "url": "terms/",    "label": "Terms" },
+    { "id": "notfound", "path": "404.html",            "url": "404.html",  "label": "404" }
+  ],
+
+  "preview": {
+    "revealSelectors": [".reveal", ".reveal-left", ".reveal-right"],
+    "visibleClass": "visible"
+  },
+
+  "admin": {
+    "loginOutput": "admin-login/index.html",
+    "imageDefaultMax": 1600,
+    "imageQuality": 0.82
+  }
+}

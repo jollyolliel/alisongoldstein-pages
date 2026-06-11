@@ -71,23 +71,21 @@
     <main class="flex-grow pt-0">
 
       <!-- Page hero -->
-      <section class="pt-32 pb-20 bg-white">
+      <section class="pt-32 pb-20 bg-white" data-cms-section="business-hero" data-cms-label="Page Hero">
         <div class="container mx-auto px-6">
           <div class="max-w-2xl">
             <div class="flex items-center gap-3 mb-5 reveal">
               <div class="h-px w-8 bg-brand-accent/40 rounded-full"></div>
-              <span class="text-xs font-bold uppercase tracking-widest text-brand-accent">Organizational Excellence</span>
+              <span class="text-xs font-bold uppercase tracking-widest text-brand-accent" data-cms="business_eyebrow">Organizational Excellence</span>
             </div>
-            <h1 class="font-serif text-4xl md:text-5xl text-brand-dark mb-5 reveal delay-100">Business Services</h1>
-            <p class="text-lg text-slate-500 leading-relaxed max-w-lg reveal delay-200">
-              Partnering with organizations to develop resilient leaders, strengthen culture, and build teams that thrive through change.
-            </p>
+            <h1 class="font-serif text-4xl md:text-5xl text-brand-dark mb-5 reveal delay-100" data-cms="business_heading">Business Services</h1>
+            <p class="text-lg text-slate-500 leading-relaxed max-w-lg reveal delay-200" data-cms="business_subtext">Partnering with organizations to develop resilient leaders, strengthen culture, and build teams that thrive through change.</p>
           </div>
         </div>
       </section>
 
       <!-- Main content -->
-      <section class="py-16 bg-white">
+      <section class="py-16 bg-white" data-cms-section="business-main" data-cms-label="Why Coaching">
         <div class="container mx-auto px-6">
           <div class="flex flex-col lg:flex-row gap-16 max-w-6xl mx-auto">
 
@@ -98,48 +96,73 @@
                 alt="Corporate coaching meeting"
                 loading="eager"
                 class="rounded-2xl shadow-2xl w-full h-full object-cover min-h-80"
+                data-cms-img="business_image"
+                data-cms-img-max="1200"
+                data-cms-attr="alt:business_image_alt"
               />
             </div>
 
             <!-- Content -->
             <div class="lg:w-1/2 flex flex-col justify-center reveal-right">
-              <h2 class="font-serif text-3xl text-brand-dark mb-4">Why Invest in Coaching?</h2>
-              <p class="text-slate-600 leading-relaxed mb-8">
-                In today's rapidly changing global market, the resilience and adaptability of your workforce is your greatest competitive advantage. Coaching builds leaders who don't just survive change — they shape it.
-              </p>
+              <h2 class="font-serif text-3xl text-brand-dark mb-4" data-cms="business_why_heading">Why Invest in Coaching?</h2>
+              <p class="text-slate-600 leading-relaxed mb-8" data-cms="business_why_body">In today's rapidly changing global market, the resilience and adaptability of your workforce is your greatest competitive advantage. Coaching builds leaders who don't just survive change — they shape it.</p>
 
-              <div class="space-y-6 mb-10">
-                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-brand-dark flex items-center justify-center flex-shrink-0">
-                    <i data-lucide="building-2" class="w-5 h-5 text-brand-accent"></i>
+              <div
+                class="space-y-6 mb-10"
+                data-cms-list="business_benefits"
+                data-cms-label="Benefits"
+                data-cms-types="desc:textarea"
+                data-cms-min="1"
+                data-cms-max="6"
+              >
+                <template data-cms-template>
+                  <div class="flex gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-brand-dark flex items-center justify-center flex-shrink-0">
+                      <i data-lucide="{{icon}}" class="w-5 h-5 text-brand-accent"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-bold text-brand-dark mb-1">{{title}}</h4>
+                      <p class="text-sm text-slate-500 leading-relaxed">{{desc}}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 class="font-bold text-brand-dark mb-1">Organizational Benefits</h4>
-                    <p class="text-sm text-slate-500 leading-relaxed">Improve retention, strengthen culture, and identify high-potential leaders before you lose them.</p>
+                </template>
+
+                  <div data-cms-item="0" class="flex gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-brand-dark flex items-center justify-center flex-shrink-0">
+                      <i data-lucide="building-2" class="w-5 h-5 text-brand-accent"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-bold text-brand-dark mb-1">Organizational Benefits</h4>
+                      <p class="text-sm text-slate-500 leading-relaxed">Improve retention, strengthen culture, and identify high-potential leaders before you lose them.</p>
+                    </div>
                   </div>
-                </div>
-                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-brand-dark flex items-center justify-center flex-shrink-0">
-                    <i data-lucide="user-check" class="w-5 h-5 text-brand-accent"></i>
+                
+
+                  <div data-cms-item="1" class="flex gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-brand-dark flex items-center justify-center flex-shrink-0">
+                      <i data-lucide="user-check" class="w-5 h-5 text-brand-accent"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-bold text-brand-dark mb-1">Employee Benefits</h4>
+                      <p class="text-sm text-slate-500 leading-relaxed">Navigate professional challenges with clarity, build confidence, and unlock personal potential.</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 class="font-bold text-brand-dark mb-1">Employee Benefits</h4>
-                    <p class="text-sm text-slate-500 leading-relaxed">Navigate professional challenges with clarity, build confidence, and unlock personal potential.</p>
+                
+
+                  <div data-cms-item="2" class="flex gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-brand-dark flex items-center justify-center flex-shrink-0">
+                      <i data-lucide="globe" class="w-5 h-5 text-brand-accent"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-bold text-brand-dark mb-1">Global &amp; Expat Teams</h4>
+                      <p class="text-sm text-slate-500 leading-relaxed">Specialized support for international assignees, expat employees, and cross-cultural teams.</p>
+                    </div>
                   </div>
-                </div>
-                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-brand-dark flex items-center justify-center flex-shrink-0">
-                    <i data-lucide="globe" class="w-5 h-5 text-brand-accent"></i>
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-brand-dark mb-1">Global &amp; Expat Teams</h4>
-                    <p class="text-sm text-slate-500 leading-relaxed">Specialized support for international assignees, expat employees, and cross-cultural teams.</p>
-                  </div>
-                </div>
-              </div>
+                
+</div>
 
               <a href="/contact/" class="inline-flex items-center gap-2 px-7 py-3.5 rounded font-semibold tracking-widest text-xs uppercase bg-brand-dark text-white hover:bg-brand-accent transition-all duration-300">
-                Request a Corporate Proposal
+                <span data-cms="business_cta_button">Request a Corporate Proposal</span>
                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
               </a>
             </div>
@@ -149,27 +172,52 @@
       </section>
 
       <!-- Industries -->
-      <section class="py-20 bg-brand-warm">
+      <section class="py-20 bg-brand-warm" data-cms-section="business-industries" data-cms-label="Industries">
         <div class="container mx-auto px-6">
           <div class="text-center mb-12 reveal">
             <div class="flex items-center justify-center gap-3 mb-4">
               <div class="h-px w-8 bg-brand-accent/40 rounded-full"></div>
-              <span class="text-xs font-bold uppercase tracking-widest text-brand-accent">Experience</span>
+              <span class="text-xs font-bold uppercase tracking-widest text-brand-accent" data-cms="industries_eyebrow">Experience</span>
               <div class="h-px w-8 bg-brand-accent/40 rounded-full"></div>
             </div>
-            <h2 class="font-serif text-3xl text-brand-dark">Industries Served</h2>
+            <h2 class="font-serif text-3xl text-brand-dark" data-cms="industries_heading">Industries Served</h2>
           </div>
-          <div class="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
-            <span class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm text-slate-600 font-medium shadow-sm hover:border-brand-accent/40 hover:text-brand-dark transition-colors">Pharmaceuticals</span>
-            <span class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm text-slate-600 font-medium shadow-sm hover:border-brand-accent/40 hover:text-brand-dark transition-colors">Technology</span>
-            <span class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm text-slate-600 font-medium shadow-sm hover:border-brand-accent/40 hover:text-brand-dark transition-colors">Healthcare</span>
-            <span class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm text-slate-600 font-medium shadow-sm hover:border-brand-accent/40 hover:text-brand-dark transition-colors">Biotech</span>
-            <span class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm text-slate-600 font-medium shadow-sm hover:border-brand-accent/40 hover:text-brand-dark transition-colors">Financial Services</span>
-            <span class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm text-slate-600 font-medium shadow-sm hover:border-brand-accent/40 hover:text-brand-dark transition-colors">Manufacturing</span>
-            <span class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm text-slate-600 font-medium shadow-sm hover:border-brand-accent/40 hover:text-brand-dark transition-colors">Food Processing</span>
-            <span class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm text-slate-600 font-medium shadow-sm hover:border-brand-accent/40 hover:text-brand-dark transition-colors">Software</span>
-          </div>
-          <div class="text-center mt-10 text-sm text-slate-400 reveal">Partnering with Fortune 500 companies across 6 global regions</div>
+          <div
+            class="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto"
+            data-cms-list="industries"
+            data-cms-label="Industry Tags"
+            data-cms-min="1"
+            data-cms-max="16"
+          >
+            <template data-cms-template>
+              <span class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm text-slate-600 font-medium shadow-sm hover:border-brand-accent/40 hover:text-brand-dark transition-colors">{{.}}</span>
+            </template>
+
+              <span data-cms-item="0" class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm text-slate-600 font-medium shadow-sm hover:border-brand-accent/40 hover:text-brand-dark transition-colors">Pharmaceuticals</span>
+            
+
+              <span data-cms-item="1" class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm text-slate-600 font-medium shadow-sm hover:border-brand-accent/40 hover:text-brand-dark transition-colors">Technology</span>
+            
+
+              <span data-cms-item="2" class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm text-slate-600 font-medium shadow-sm hover:border-brand-accent/40 hover:text-brand-dark transition-colors">Healthcare</span>
+            
+
+              <span data-cms-item="3" class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm text-slate-600 font-medium shadow-sm hover:border-brand-accent/40 hover:text-brand-dark transition-colors">Biotech</span>
+            
+
+              <span data-cms-item="4" class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm text-slate-600 font-medium shadow-sm hover:border-brand-accent/40 hover:text-brand-dark transition-colors">Financial Services</span>
+            
+
+              <span data-cms-item="5" class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm text-slate-600 font-medium shadow-sm hover:border-brand-accent/40 hover:text-brand-dark transition-colors">Manufacturing</span>
+            
+
+              <span data-cms-item="6" class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm text-slate-600 font-medium shadow-sm hover:border-brand-accent/40 hover:text-brand-dark transition-colors">Food Processing</span>
+            
+
+              <span data-cms-item="7" class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm text-slate-600 font-medium shadow-sm hover:border-brand-accent/40 hover:text-brand-dark transition-colors">Software</span>
+            
+</div>
+          <div class="text-center mt-10 text-sm text-slate-400 reveal" data-cms="industries_note">Partnering with Fortune 500 companies across 6 global regions</div>
         </div>
       </section>
 

@@ -57,6 +57,16 @@
 .delay-500 { transition-delay: 0.50s; }
 .delay-600 { transition-delay: 0.60s; }
 
+/* CMS list stagger — per-item delay-* classes can't vary inside one
+   data-cms-template, so stagger by position instead. nth-child(1) is the
+   <template> element, so items start at nth-child(2). */
+.cms-stagger > :nth-child(2) { transition-delay: 0.10s; }
+.cms-stagger > :nth-child(3) { transition-delay: 0.20s; }
+.cms-stagger > :nth-child(4) { transition-delay: 0.30s; }
+.cms-stagger > :nth-child(5) { transition-delay: 0.40s; }
+.cms-stagger > :nth-child(6) { transition-delay: 0.50s; }
+.cms-stagger > :nth-child(7) { transition-delay: 0.60s; }
+
 /* Reset scroll-reveal delay on hover so transform animates immediately */
 .reveal:hover,
 .reveal-left:hover,

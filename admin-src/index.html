@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Site Editor</title>
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body>
+    <!-- Build-time injection points: encrypt.js swaps the two placeholder
+     values below for the runtime config JSON and the real PAT (in
+     memory only — this source file must never be committed with a real
+     token). This file is build input for encrypt.js only — it never
+     runs with the placeholders still in place. -->
+    <!-- prettier-ignore: encrypt.js matches these two lines verbatim -->
+    <script id="cms-config" type="application/json">__CMS_CONFIG__</script>
+    <script>var CMS_TOKEN = '__GITHUB_TOKEN__';</script>
+
+    <!-- APP HEADER -->
+    <div id="app-header">
+      <span class="brand" id="brand">Site Editor</span>
+      <nav id="page-tabs"></nav>
+      <div id="header-right">
+        <span id="status-msg"></span>
+        <button class="hbtn hbtn-ghost" id="view-site-btn" type="button">
+          View Site
+        </button>
+        <button class="hbtn hbtn-primary" id="publish-btn" type="button">
+          Publish<span id="publish-badge" style="display: none"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- WORKSPACE -->
+    <div id="workspace">
+      <div id="editor-pane">
+        <div id="editor-inner"></div>
+      </div>
+      <div id="preview-pane">
+        <div id="preview-toolbar">
+          <span>Live Preview</span>
+          <button class="hbtn hbtn-ghost" id="reload-btn" type="button">
+            ↺ Reload
+          </button>
+        </div>
+        <div id="preview-wrap">
+          <iframe id="preview-frame" title="Live preview"></iframe>
+          <div id="preview-loading">Loading preview…</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../shared/microtpl.js"></script>
+    <script src="core.js"></script>
+    <script src="editor.js"></script>
+    <script src="preview.js"></script>
+    <script>
+      CMSCore.boot();
+    </script>
+  </body>
+</html>

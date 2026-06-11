@@ -172,6 +172,8 @@
       <!-- ─── HERO ─── -->
       <section
         class="relative min-h-screen flex items-center overflow-hidden bg-brand-warm"
+        data-cms-section="hero"
+        data-cms-label="Hero"
       >
         <!-- Photo: full right half on desktop, full bg on mobile -->
         <div class="absolute top-0 right-0 w-full md:w-1/2 h-full">
@@ -181,6 +183,9 @@
             loading="eager"
             fetchpriority="high"
             class="w-full h-full object-cover object-top"
+            data-cms-img="hero_image"
+            data-cms-img-max="1600"
+            data-cms-attr="alt:hero_image_alt"
           />
           <!-- Desktop: gradient from left -->
           <div
@@ -214,13 +219,13 @@
                 class="inline-flex items-center gap-1.5 py-1 px-3 border border-brand-accent/60 text-brand-accent font-bold text-xs uppercase tracking-widest rounded-full bg-white/80 backdrop-blur-sm"
               >
                 <span class="w-1.5 h-1.5 rounded-full bg-brand-accent"></span>
-                PCC Certified Coach
+                <span data-cms="hero_pill_1">PCC Certified Coach</span>
               </span>
               <span
                 class="inline-flex items-center gap-1.5 py-1 px-3 bg-brand-accent text-white font-bold text-xs uppercase tracking-widest rounded-full"
               >
                 <span class="w-1.5 h-1.5 rounded-full bg-white/60"></span>
-                4,000+ Hours Experience
+                <span data-cms="hero_pill_2">4,000+ Hours Experience</span>
               </span>
             </div>
 
@@ -229,9 +234,10 @@
               id="hero-headline"
               class="font-serif text-5xl md:text-6xl lg:text-7xl text-brand-dark leading-[1.08] mb-6 md:text-brand-dark text-white/95"
             >
-              Navigate Change.<br />
+              <span data-cms="hero_heading_line1">Navigate Change.</span><br />
               <span
                 class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-brand-gold"
+                data-cms="hero_heading_line2"
                 >Lead with Impact.</span
               >
             </h1>
@@ -239,184 +245,240 @@
             <!-- Sub copy -->
             <p
               class="text-lg leading-relaxed mb-10 max-w-md text-slate-600 md:text-slate-600 text-white/85"
-            >
-              Empowering global professionals to thrive in transition — whether
-              stepping up in leadership, changing careers, or moving countries.
-            </p>
+              data-cms="hero_subtext"
+            >Empowering global professionals to thrive in transition — whether stepping up in leadership, changing careers, or moving countries.</p>
 
             <!-- CTAs -->
             <div class="flex flex-wrap gap-4 mb-14">
               <a
                 href="/contact/"
                 class="px-7 py-3.5 rounded font-semibold tracking-widest text-xs uppercase bg-brand-dark text-white hover:bg-brand-accent transition-all duration-300 shadow-md hover:shadow-lg"
-              >
-                Start Your Journey
-              </a>
+                data-cms="hero_cta_primary"
+              >Start Your Journey</a>
               <a
                 href="/about/"
                 class="px-7 py-3.5 rounded font-semibold tracking-widest text-xs uppercase border-2 border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white transition-all duration-300 md:border-brand-dark md:text-brand-dark border-white text-white hover:bg-white hover:text-brand-dark"
-              >
-                About Alison
-              </a>
+                data-cms="hero_cta_secondary"
+              >About Alison</a>
             </div>
           </div>
         </div>
       </section>
 
       <!-- ─── STATS BAND ─── -->
-      <section class="py-14 bg-brand-dark grain">
+      <section class="py-14 bg-brand-dark grain" data-cms-section="stats" data-cms-label="Stats">
         <div class="container mx-auto px-6">
-          <div class="grid grid-cols-2 md:grid-cols-4">
-            <div class="stat-item text-center px-6 py-6">
-              <div
-                class="font-serif text-5xl font-bold text-brand-accent leading-none mb-2"
-              >
-                <span data-counter="4000">4000</span
-                ><span class="text-3xl">+</span>
+          <div
+            class="grid grid-cols-2 md:grid-cols-4"
+            data-cms-list="stats"
+            data-cms-label="Stats"
+            data-cms-count-class="md:grid-cols-*"
+            data-cms-min="2"
+            data-cms-max="6"
+          >
+            <template data-cms-template>
+              <div class="stat-item text-center px-6 py-6">
+                <div
+                  class="font-serif text-5xl font-bold text-brand-accent leading-none mb-2"
+                >
+                  <span data-counter="{{num}}">{{num}}</span
+                  >{{#suffix}}<span class="text-3xl">{{suffix}}</span>{{/suffix}}
+                </div>
+                <div
+                  class="text-xs uppercase tracking-widest text-slate-400 mt-1"
+                >
+                  {{label}}
+                </div>
               </div>
-              <div
-                class="text-xs uppercase tracking-widest text-slate-400 mt-1"
-              >
-                Hours Coached
+            </template>
+
+              <div data-cms-item="0" class="stat-item text-center px-6 py-6">
+                <div
+                  class="font-serif text-5xl font-bold text-brand-accent leading-none mb-2"
+                >
+                  <span data-counter="4000">4000</span
+                  ><span class="text-3xl">+</span>
+                </div>
+                <div
+                  class="text-xs uppercase tracking-widest text-slate-400 mt-1"
+                >
+                  Hours Coached
+                </div>
               </div>
-            </div>
-            <div class="stat-item text-center px-6 py-6">
-              <div
-                class="font-serif text-5xl font-bold text-brand-accent leading-none mb-2"
-              >
-                <span data-counter="400">400</span
-                ><span class="text-3xl">+</span>
+            
+
+              <div data-cms-item="1" class="stat-item text-center px-6 py-6">
+                <div
+                  class="font-serif text-5xl font-bold text-brand-accent leading-none mb-2"
+                >
+                  <span data-counter="400">400</span
+                  ><span class="text-3xl">+</span>
+                </div>
+                <div
+                  class="text-xs uppercase tracking-widest text-slate-400 mt-1"
+                >
+                  Professionals Served
+                </div>
               </div>
-              <div
-                class="text-xs uppercase tracking-widest text-slate-400 mt-1"
-              >
-                Professionals Served
+            
+
+              <div data-cms-item="2" class="stat-item text-center px-6 py-6">
+                <div
+                  class="font-serif text-5xl font-bold text-brand-accent leading-none mb-2"
+                >
+                  <span data-counter="23">23</span
+                  ><span class="text-3xl">+</span>
+                </div>
+                <div
+                  class="text-xs uppercase tracking-widest text-slate-400 mt-1"
+                >
+                  Years International
+                </div>
               </div>
-            </div>
-            <div class="stat-item text-center px-6 py-6">
-              <div
-                class="font-serif text-5xl font-bold text-brand-accent leading-none mb-2"
-              >
-                <span data-counter="23">23</span><span class="text-3xl">+</span>
+            
+
+              <div data-cms-item="3" class="stat-item text-center px-6 py-6">
+                <div
+                  class="font-serif text-5xl font-bold text-brand-accent leading-none mb-2"
+                >
+                  <span data-counter="6">6</span
+                  >
+                </div>
+                <div
+                  class="text-xs uppercase tracking-widest text-slate-400 mt-1"
+                >
+                  Global Regions
+                </div>
               </div>
-              <div
-                class="text-xs uppercase tracking-widest text-slate-400 mt-1"
-              >
-                Years International
-              </div>
-            </div>
-            <div class="stat-item text-center px-6 py-6">
-              <div
-                class="font-serif text-5xl font-bold text-brand-accent leading-none mb-2"
-              >
-                <span data-counter="6">6</span>
-              </div>
-              <div
-                class="text-xs uppercase tracking-widest text-slate-400 mt-1"
-              >
-                Global Regions
-              </div>
-            </div>
-          </div>
+            
+</div>
         </div>
       </section>
 
       <!-- ─── SERVICES ─── -->
-      <section class="py-24 bg-white">
+      <section class="py-24 bg-white" data-cms-section="services" data-cms-label="Services">
         <div class="container mx-auto px-6">
           <div class="mb-14 text-center reveal">
             <div class="flex items-center justify-center gap-3 mb-4">
               <div class="h-px w-8 bg-brand-accent/40 rounded-full"></div>
               <span
                 class="text-xs font-bold uppercase tracking-widest text-brand-accent"
+                data-cms="services_eyebrow"
                 >What I Offer</span
               >
               <div class="h-px w-8 bg-brand-accent/40 rounded-full"></div>
             </div>
-            <h2 class="font-serif text-4xl md:text-5xl text-brand-dark">
-              Areas of Focus
-            </h2>
+            <h2 class="font-serif text-4xl md:text-5xl text-brand-dark" data-cms="services_heading">Areas of Focus</h2>
           </div>
 
           <div
-            class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto"
+            class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto cms-stagger"
             id="quick-services-grid"
+            data-cms-list="services"
+            data-cms-label="Service Cards"
+            data-cms-types="desc:textarea"
+            data-cms-min="1"
+            data-cms-max="6"
           >
-            <div
-              class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal delay-100"
-            >
-              <div class="service-ghost-num">01</div>
-              <i
-                data-lucide="user"
-                class="w-9 h-9 text-brand-accent mb-6 group-hover:scale-110 transition-transform duration-300"
-              ></i>
-              <h3 class="font-serif text-xl mb-3 text-white">
-                Leadership Coaching
-              </h3>
-              <p class="text-slate-400 leading-relaxed text-sm">
-                Develop resilience, executive presence, and clarity to lead with
-                confidence in complex environments.
-              </p>
-              <div class="mt-6 pt-6 border-t border-white/8">
-                <a
-                  href="/packages/"
-                  class="text-xs font-bold uppercase tracking-wider text-brand-accent hover:text-white transition-colors flex items-center gap-2 group-hover:gap-3"
-                  >Learn More <i data-lucide="arrow-right" class="w-3 h-3"></i
-                ></a>
+            <template data-cms-template>
+              <div
+                class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal"
+              >
+                <div class="service-ghost-num">{{@nn}}</div>
+                <i
+                  data-lucide="{{icon}}"
+                  class="w-9 h-9 text-brand-accent mb-6 group-hover:scale-110 transition-transform duration-300"
+                ></i>
+                <h3 class="font-serif text-xl mb-3 text-white">
+                  {{title}}
+                </h3>
+                <p class="text-slate-400 leading-relaxed text-sm">
+                  {{desc}}
+                </p>
+                <div class="mt-6 pt-6 border-t border-white/8">
+                  <a
+                    href="/packages/"
+                    class="text-xs font-bold uppercase tracking-wider text-brand-accent hover:text-white transition-colors flex items-center gap-2 group-hover:gap-3"
+                    >Learn More <i data-lucide="arrow-right" class="w-3 h-3"></i
+                  ></a>
+                </div>
               </div>
-            </div>
-            <div
-              class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal delay-200"
-            >
-              <div class="service-ghost-num">02</div>
-              <i
-                data-lucide="briefcase"
-                class="w-9 h-9 text-brand-accent mb-6 group-hover:scale-110 transition-transform duration-300"
-              ></i>
-              <h3 class="font-serif text-xl mb-3 text-white">
-                Career Transition
-              </h3>
-              <p class="text-slate-400 leading-relaxed text-sm">
-                Align your profession with your true purpose — navigate pivots,
-                promotions, and new beginnings.
-              </p>
-              <div class="mt-6 pt-6 border-t border-white/8">
-                <a
-                  href="/packages/"
-                  class="text-xs font-bold uppercase tracking-wider text-brand-accent hover:text-white transition-colors flex items-center gap-2 group-hover:gap-3"
-                  >Learn More <i data-lucide="arrow-right" class="w-3 h-3"></i
-                ></a>
+            </template>
+
+              <div data-cms-item="0"                 class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal"
+              >
+                <div class="service-ghost-num">01</div>
+                <i
+                  data-lucide="user"
+                  class="w-9 h-9 text-brand-accent mb-6 group-hover:scale-110 transition-transform duration-300"
+                ></i>
+                <h3 class="font-serif text-xl mb-3 text-white">
+                  Leadership Coaching
+                </h3>
+                <p class="text-slate-400 leading-relaxed text-sm">
+                  Develop resilience, executive presence, and clarity to lead with confidence in complex environments.
+                </p>
+                <div class="mt-6 pt-6 border-t border-white/8">
+                  <a
+                    href="/packages/"
+                    class="text-xs font-bold uppercase tracking-wider text-brand-accent hover:text-white transition-colors flex items-center gap-2 group-hover:gap-3"
+                    >Learn More <i data-lucide="arrow-right" class="w-3 h-3"></i
+                  ></a>
+                </div>
               </div>
-            </div>
-            <div
-              class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal delay-300"
-            >
-              <div class="service-ghost-num">03</div>
-              <i
-                data-lucide="globe"
-                class="w-9 h-9 text-brand-accent mb-6 group-hover:scale-110 transition-transform duration-300"
-              ></i>
-              <h3 class="font-serif text-xl mb-3 text-white">
-                Expat &amp; Global Moves
-              </h3>
-              <p class="text-slate-400 leading-relaxed text-sm">
-                Master the art of international relocation, cultural adaptation,
-                and building a meaningful life abroad.
-              </p>
-              <div class="mt-6 pt-6 border-t border-white/8">
-                <a
-                  href="/packages/"
-                  class="text-xs font-bold uppercase tracking-wider text-brand-accent hover:text-white transition-colors flex items-center gap-2 group-hover:gap-3"
-                  >Learn More <i data-lucide="arrow-right" class="w-3 h-3"></i
-                ></a>
+            
+
+              <div data-cms-item="1"                 class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal"
+              >
+                <div class="service-ghost-num">02</div>
+                <i
+                  data-lucide="briefcase"
+                  class="w-9 h-9 text-brand-accent mb-6 group-hover:scale-110 transition-transform duration-300"
+                ></i>
+                <h3 class="font-serif text-xl mb-3 text-white">
+                  Career Transition
+                </h3>
+                <p class="text-slate-400 leading-relaxed text-sm">
+                  Align your profession with your true purpose — navigate pivots, promotions, and new beginnings.
+                </p>
+                <div class="mt-6 pt-6 border-t border-white/8">
+                  <a
+                    href="/packages/"
+                    class="text-xs font-bold uppercase tracking-wider text-brand-accent hover:text-white transition-colors flex items-center gap-2 group-hover:gap-3"
+                    >Learn More <i data-lucide="arrow-right" class="w-3 h-3"></i
+                  ></a>
+                </div>
               </div>
-            </div>
-          </div>
+            
+
+              <div data-cms-item="2"                 class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal"
+              >
+                <div class="service-ghost-num">03</div>
+                <i
+                  data-lucide="globe"
+                  class="w-9 h-9 text-brand-accent mb-6 group-hover:scale-110 transition-transform duration-300"
+                ></i>
+                <h3 class="font-serif text-xl mb-3 text-white">
+                  Expat &amp; Global Moves
+                </h3>
+                <p class="text-slate-400 leading-relaxed text-sm">
+                  Master the art of international relocation, cultural adaptation, and building a meaningful life abroad.
+                </p>
+                <div class="mt-6 pt-6 border-t border-white/8">
+                  <a
+                    href="/packages/"
+                    class="text-xs font-bold uppercase tracking-wider text-brand-accent hover:text-white transition-colors flex items-center gap-2 group-hover:gap-3"
+                    >Learn More <i data-lucide="arrow-right" class="w-3 h-3"></i
+                  ></a>
+                </div>
+              </div>
+            
+</div>
         </div>
       </section>
 
       <!-- ─── PHILOSOPHY ─── -->
-      <section class="py-24 bg-brand-warm overflow-hidden">
+      <section class="py-24 bg-brand-warm overflow-hidden" data-cms-section="philosophy" data-cms-label="Philosophy">
         <div class="container mx-auto px-6">
           <div class="flex flex-col md:flex-row items-center gap-16">
             <!-- Image column -->
@@ -433,6 +495,9 @@
                   alt="Coaching Session"
                   loading="lazy"
                   class="rounded-2xl shadow-2xl w-full"
+                  data-cms-img="philosophy_image"
+                  data-cms-img-max="1200"
+                  data-cms-attr="alt:philosophy_image_alt"
                 />
                 <div
                   class="absolute -bottom-5 -right-5 bg-brand-dark text-white px-5 py-3 rounded-xl shadow-lg hidden md:block"
@@ -445,12 +510,9 @@
                     <div>
                       <div
                         class="text-xs font-bold uppercase tracking-wider text-brand-accent"
-                      >
-                        ICF Accredited
-                      </div>
-                      <div class="text-xs text-slate-400">
-                        PCC Certified Coach
-                      </div>
+                        data-cms="philosophy_badge_title"
+                      >ICF Accredited</div>
+                      <div class="text-xs text-slate-400" data-cms="philosophy_badge_sub">PCC Certified Coach</div>
                     </div>
                   </div>
                 </div>
@@ -463,14 +525,16 @@
                 <div class="h-px w-8 bg-brand-accent/40 rounded-full"></div>
                 <span
                   class="text-xs font-bold uppercase tracking-widest text-brand-accent"
+                  data-cms="philosophy_eyebrow"
                   >Philosophy</span
                 >
               </div>
               <h2
                 class="font-serif text-4xl md:text-5xl text-brand-dark mb-6 leading-tight"
               >
-                Unlock Your<br /><em
+                <span data-cms="philosophy_heading_line1">Unlock Your</span><br /><em
                   class="not-italic text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-brand-gold"
+                  data-cms="philosophy_heading_accent"
                   >Potential</em
                 >
               </h2>
@@ -478,86 +542,90 @@
               <div class="pull-quote mb-8">
                 <p
                   class="text-lg font-serif text-slate-700 leading-relaxed italic"
-                >
-                  "As your coach, I believe you already hold the answers within
-                  you — my role is to help you unlock them."
-                </p>
+                  data-cms="philosophy_quote"
+                >&quot;As your coach, I believe you already hold the answers within you — my role is to help you unlock them.&quot;</p>
               </div>
 
-              <p class="text-slate-600 leading-relaxed mb-8">
-                Coaching with me isn't about quick fixes. It's about discovering
-                what truly matters and translating big goals into bold,
-                bite-sized actions that create lasting impact.
-              </p>
+              <p class="text-slate-600 leading-relaxed mb-8" data-cms="philosophy_body">Coaching with me isn't about quick fixes. It's about discovering what truly matters and translating big goals into bold, bite-sized actions that create lasting impact.</p>
 
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                <div
-                  class="flex items-center gap-3 p-3 rounded-lg bg-white border border-slate-100 hover:border-brand-accent/30 transition-colors group"
-                >
+              <div
+                class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8"
+                data-cms-list="philosophy_points"
+                data-cms-label="Focus Points"
+                data-cms-min="1"
+                data-cms-max="10"
+              >
+                <template data-cms-template>
                   <div
-                    class="w-1.5 h-1.5 rounded-full bg-brand-accent flex-shrink-0"
-                  ></div>
-                  <span class="text-sm font-medium text-slate-700"
-                    >Agility &amp; Resilience</span
+                    class="flex items-center gap-3 p-3 rounded-lg bg-white border border-slate-100 hover:border-brand-accent/30 transition-colors group"
                   >
-                </div>
-                <div
-                  class="flex items-center gap-3 p-3 rounded-lg bg-white border border-slate-100 hover:border-brand-accent/30 transition-colors group"
-                >
-                  <div
-                    class="w-1.5 h-1.5 rounded-full bg-brand-accent flex-shrink-0"
-                  ></div>
-                  <span class="text-sm font-medium text-slate-700"
-                    >Authentic Leadership</span
+                    <div
+                      class="w-1.5 h-1.5 rounded-full bg-brand-accent flex-shrink-0"
+                    ></div>
+                    <span class="text-sm font-medium text-slate-700">{{.}}</span>
+                  </div>
+                </template>
+
+                  <div data-cms-item="0"                     class="flex items-center gap-3 p-3 rounded-lg bg-white border border-slate-100 hover:border-brand-accent/30 transition-colors group"
                   >
-                </div>
-                <div
-                  class="flex items-center gap-3 p-3 rounded-lg bg-white border border-slate-100 hover:border-brand-accent/30 transition-colors group"
-                >
-                  <div
-                    class="w-1.5 h-1.5 rounded-full bg-brand-accent flex-shrink-0"
-                  ></div>
-                  <span class="text-sm font-medium text-slate-700"
-                    >Strategic Influence</span
+                    <div
+                      class="w-1.5 h-1.5 rounded-full bg-brand-accent flex-shrink-0"
+                    ></div>
+                    <span class="text-sm font-medium text-slate-700">Agility &amp; Resilience</span>
+                  </div>
+                
+
+                  <div data-cms-item="1"                     class="flex items-center gap-3 p-3 rounded-lg bg-white border border-slate-100 hover:border-brand-accent/30 transition-colors group"
                   >
-                </div>
-                <div
-                  class="flex items-center gap-3 p-3 rounded-lg bg-white border border-slate-100 hover:border-brand-accent/30 transition-colors group"
-                >
-                  <div
-                    class="w-1.5 h-1.5 rounded-full bg-brand-accent flex-shrink-0"
-                  ></div>
-                  <span class="text-sm font-medium text-slate-700"
-                    >Career Progression</span
+                    <div
+                      class="w-1.5 h-1.5 rounded-full bg-brand-accent flex-shrink-0"
+                    ></div>
+                    <span class="text-sm font-medium text-slate-700">Authentic Leadership</span>
+                  </div>
+                
+
+                  <div data-cms-item="2"                     class="flex items-center gap-3 p-3 rounded-lg bg-white border border-slate-100 hover:border-brand-accent/30 transition-colors group"
                   >
-                </div>
-                <div
-                  class="flex items-center gap-3 p-3 rounded-lg bg-white border border-slate-100 hover:border-brand-accent/30 transition-colors group"
-                >
-                  <div
-                    class="w-1.5 h-1.5 rounded-full bg-brand-accent flex-shrink-0"
-                  ></div>
-                  <span class="text-sm font-medium text-slate-700"
-                    >Work–Life Balance</span
+                    <div
+                      class="w-1.5 h-1.5 rounded-full bg-brand-accent flex-shrink-0"
+                    ></div>
+                    <span class="text-sm font-medium text-slate-700">Strategic Influence</span>
+                  </div>
+                
+
+                  <div data-cms-item="3"                     class="flex items-center gap-3 p-3 rounded-lg bg-white border border-slate-100 hover:border-brand-accent/30 transition-colors group"
                   >
-                </div>
-                <div
-                  class="flex items-center gap-3 p-3 rounded-lg bg-white border border-slate-100 hover:border-brand-accent/30 transition-colors group"
-                >
-                  <div
-                    class="w-1.5 h-1.5 rounded-full bg-brand-accent flex-shrink-0"
-                  ></div>
-                  <span class="text-sm font-medium text-slate-700"
-                    >Confidence &amp; Purpose</span
+                    <div
+                      class="w-1.5 h-1.5 rounded-full bg-brand-accent flex-shrink-0"
+                    ></div>
+                    <span class="text-sm font-medium text-slate-700">Career Progression</span>
+                  </div>
+                
+
+                  <div data-cms-item="4"                     class="flex items-center gap-3 p-3 rounded-lg bg-white border border-slate-100 hover:border-brand-accent/30 transition-colors group"
                   >
-                </div>
-              </div>
+                    <div
+                      class="w-1.5 h-1.5 rounded-full bg-brand-accent flex-shrink-0"
+                    ></div>
+                    <span class="text-sm font-medium text-slate-700">Work–Life Balance</span>
+                  </div>
+                
+
+                  <div data-cms-item="5"                     class="flex items-center gap-3 p-3 rounded-lg bg-white border border-slate-100 hover:border-brand-accent/30 transition-colors group"
+                  >
+                    <div
+                      class="w-1.5 h-1.5 rounded-full bg-brand-accent flex-shrink-0"
+                    ></div>
+                    <span class="text-sm font-medium text-slate-700">Confidence &amp; Purpose</span>
+                  </div>
+                
+</div>
 
               <a
                 href="/about/"
                 class="inline-flex items-center gap-2 px-7 py-3.5 rounded font-semibold tracking-widest text-xs uppercase border-2 border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white transition-all duration-300"
               >
-                Read My Story
+                <span data-cms="philosophy_cta">Read My Story</span>
                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
               </a>
             </div>
@@ -566,99 +634,114 @@
       </section>
 
       <!-- ─── HOW IT WORKS ─── -->
-      <section class="py-24 bg-white">
+      <section class="py-24 bg-white" data-cms-section="process" data-cms-label="How It Works">
         <div class="container mx-auto px-6">
           <div class="mb-14 text-center reveal">
             <div class="flex items-center justify-center gap-3 mb-4">
               <div class="h-px w-8 bg-brand-accent/40 rounded-full"></div>
               <span
                 class="text-xs font-bold uppercase tracking-widest text-brand-accent"
+                data-cms="process_eyebrow"
                 >The Process</span
               >
               <div class="h-px w-8 bg-brand-accent/40 rounded-full"></div>
             </div>
-            <h2 class="font-serif text-4xl md:text-5xl text-brand-dark">
-              How Coaching Works
-            </h2>
-            <p class="text-slate-500 mt-4 max-w-lg mx-auto leading-relaxed">
-              A simple, structured approach that meets you exactly where you
-              are.
-            </p>
+            <h2 class="font-serif text-4xl md:text-5xl text-brand-dark" data-cms="process_heading">How Coaching Works</h2>
+            <p class="text-slate-500 mt-4 max-w-lg mx-auto leading-relaxed" data-cms="process_subtext">A simple, structured approach that meets you exactly where you are.</p>
           </div>
 
-          <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div class="relative text-center reveal delay-100">
-              <div class="flex justify-center mb-6">
-                <div class="step-circle">1</div>
+          <div
+            class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto cms-stagger"
+            data-cms-list="process_steps"
+            data-cms-label="Process Steps"
+            data-cms-types="desc:textarea"
+            data-cms-min="1"
+            data-cms-max="6"
+          >
+            <template data-cms-template>
+              <div class="relative text-center reveal">
+                <div class="flex justify-center mb-6">
+                  <div class="step-circle">{{@n}}</div>
+                </div>
+                <h3 class="font-serif text-xl text-brand-dark mb-3">
+                  {{title}}
+                </h3>
+                <p class="text-slate-500 text-sm leading-relaxed">
+                  {{desc}}
+                </p>
+                {{#highlight}}<div
+                  class="mt-4 inline-block text-xs font-bold uppercase tracking-widest text-brand-accent bg-brand-accent/8 px-3 py-1 rounded-full"
+                >
+                  {{badge}}
+                </div>{{/highlight}}{{^highlight}}<div
+                  class="mt-4 inline-block text-xs font-bold uppercase tracking-widest text-slate-400 bg-slate-100 px-3 py-1 rounded-full"
+                >
+                  {{badge}}
+                </div>{{/highlight}}
               </div>
-              <h3 class="font-serif text-xl text-brand-dark mb-3">
-                Discovery Session
-              </h3>
-              <p class="text-slate-500 text-sm leading-relaxed">
-                A complimentary 45-minute conversation to explore your goals and
-                see if we're the right fit. No obligation, no pressure.
-              </p>
-              <div
-                class="mt-4 inline-block text-xs font-bold uppercase tracking-widest text-brand-accent bg-brand-accent/8 px-3 py-1 rounded-full"
-              >
-                Free
-              </div>
-            </div>
-            <!-- connector line -->
-            <div
-              class="hidden md:block absolute"
-              style="
-                left: calc(33.33% - 0px);
-                top: calc(50% - 0px);
-                width: calc(33.33%);
-                height: 1px;
-              "
-            ></div>
+            </template>
 
-            <div class="relative text-center reveal delay-200">
-              <div class="flex justify-center mb-6">
-                <div class="step-circle">2</div>
+              <div data-cms-item="0" class="relative text-center reveal">
+                <div class="flex justify-center mb-6">
+                  <div class="step-circle">1</div>
+                </div>
+                <h3 class="font-serif text-xl text-brand-dark mb-3">
+                  Discovery Session
+                </h3>
+                <p class="text-slate-500 text-sm leading-relaxed">
+                  A complimentary 45-minute conversation to explore your goals and see if we're the right fit. No obligation, no pressure.
+                </p>
+                <div
+                  class="mt-4 inline-block text-xs font-bold uppercase tracking-widest text-brand-accent bg-brand-accent/8 px-3 py-1 rounded-full"
+                >
+                  Free
+                </div>
               </div>
-              <h3 class="font-serif text-xl text-brand-dark mb-3">
-                Define Your Vision
-              </h3>
-              <p class="text-slate-500 text-sm leading-relaxed">
-                Together we clarify what matters most, identify what's holding
-                you back, and build a clear picture of where you're heading.
-              </p>
-              <div
-                class="mt-4 inline-block text-xs font-bold uppercase tracking-widest text-slate-400 bg-slate-100 px-3 py-1 rounded-full"
-              >
-                Session 1
-              </div>
-            </div>
+            
 
-            <div class="relative text-center reveal delay-300">
-              <div class="flex justify-center mb-6">
-                <div class="step-circle">3</div>
+              <div data-cms-item="1" class="relative text-center reveal">
+                <div class="flex justify-center mb-6">
+                  <div class="step-circle">2</div>
+                </div>
+                <h3 class="font-serif text-xl text-brand-dark mb-3">
+                  Define Your Vision
+                </h3>
+                <p class="text-slate-500 text-sm leading-relaxed">
+                  Together we clarify what matters most, identify what's holding you back, and build a clear picture of where you're heading.
+                </p>
+                <div
+                  class="mt-4 inline-block text-xs font-bold uppercase tracking-widest text-slate-400 bg-slate-100 px-3 py-1 rounded-full"
+                >
+                  Session 1
+                </div>
               </div>
-              <h3 class="font-serif text-xl text-brand-dark mb-3">
-                Take Bold Action
-              </h3>
-              <p class="text-slate-500 text-sm leading-relaxed">
-                We translate insight into action. Each session builds
-                accountability, momentum, and the confidence to create lasting
-                change.
-              </p>
-              <div
-                class="mt-4 inline-block text-xs font-bold uppercase tracking-widest text-slate-400 bg-slate-100 px-3 py-1 rounded-full"
-              >
-                Ongoing
+            
+
+              <div data-cms-item="2" class="relative text-center reveal">
+                <div class="flex justify-center mb-6">
+                  <div class="step-circle">3</div>
+                </div>
+                <h3 class="font-serif text-xl text-brand-dark mb-3">
+                  Take Bold Action
+                </h3>
+                <p class="text-slate-500 text-sm leading-relaxed">
+                  We translate insight into action. Each session builds accountability, momentum, and the confidence to create lasting change.
+                </p>
+                <div
+                  class="mt-4 inline-block text-xs font-bold uppercase tracking-widest text-slate-400 bg-slate-100 px-3 py-1 rounded-full"
+                >
+                  Ongoing
+                </div>
               </div>
-            </div>
-          </div>
+            
+</div>
 
           <div class="text-center mt-12 reveal delay-400">
             <a
               href="/packages/"
               class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-brand-accent hover:text-brand-dark transition-colors link-hover"
             >
-              View Packages &amp; Pricing
+              <span data-cms="process_cta">View Packages &amp; Pricing</span>
               <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </a>
           </div>
@@ -666,7 +749,7 @@
       </section>
 
       <!-- ─── TESTIMONIALS ─── -->
-      <section class="py-32 bg-brand-dark grain relative overflow-hidden">
+      <section class="py-32 bg-brand-dark grain relative overflow-hidden" data-cms-section="testimonials" data-cms-label="Testimonials">
         <div class="container mx-auto px-6 relative z-10">
           <!-- Section header -->
           <div class="mb-16 text-center reveal">
@@ -674,13 +757,12 @@
               <div class="h-px w-8 bg-brand-accent/40 rounded-full"></div>
               <span
                 class="text-xs font-bold uppercase tracking-widest text-brand-accent"
+                data-cms="testimonials_eyebrow"
                 >Testimonials</span
               >
               <div class="h-px w-8 bg-brand-accent/40 rounded-full"></div>
             </div>
-            <h2 class="font-serif text-4xl md:text-5xl text-white">
-              Client Stories
-            </h2>
+            <h2 class="font-serif text-4xl md:text-5xl text-white" data-cms="testimonials_heading">Client Stories</h2>
           </div>
 
           <!-- Featured pull quote -->
@@ -688,20 +770,16 @@
             <div class="featured-quote text-center px-8 md:px-16">
               <p
                 class="font-serif text-xl md:text-2xl text-white/90 italic leading-relaxed mb-6"
-              >
-                "Within just a few sessions with Alison, I knew that my
-                investment in time and money would pay dividends for the rest of
-                my career."
-              </p>
+                data-cms="featured_quote_text"
+              >&quot;Within just a few sessions with Alison, I knew that my investment in time and money would pay dividends for the rest of my career.&quot;</p>
               <div class="flex items-center justify-center gap-3">
                 <div class="w-8 h-px bg-brand-accent/50"></div>
                 <div>
-                  <div class="text-white text-sm font-semibold">Norah L.</div>
+                  <div class="text-white text-sm font-semibold" data-cms="featured_quote_name">Norah L.</div>
                   <div
                     class="text-brand-accent text-xs uppercase tracking-wider"
-                  >
-                    Global Account Lead
-                  </div>
+                    data-cms="featured_quote_role"
+                  >Global Account Lead</div>
                 </div>
                 <div class="w-8 h-px bg-brand-accent/50"></div>
               </div>
@@ -733,21 +811,54 @@
                 <div
                   class="flex transition-transform duration-700 ease-in-out"
                   id="testimonials-grid"
+                  data-cms-list="testimonials"
+                  data-cms-label="Testimonials"
+                  data-cms-types="quote:textarea"
+                  data-cms-min="3"
                 >
-                  <div class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">I all but begged my company to extend my contract to keep working with her.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">H</div><div><div class="text-white text-sm font-semibold font-serif">Harolyn A.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Managing Vice President</div></div></div></div></div>
-                  <div class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">Through her amazing listening and coaching skills Alie helped me regain self confidence in my ability but also in my approach to balancing family and work.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">P</div><div><div class="text-white text-sm font-semibold font-serif">Paula B.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Senior Partner</div></div></div></div></div>
-                  <div class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">Alie would push me to find ways to hold myself accountable to accomplish the goals I deemed important.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">M</div><div><div class="text-white text-sm font-semibold font-serif">Matt B.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Sr. Director</div></div></div></div></div>
-                  <div class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">You helped me find common ground with my toughest negotiators, the kids, and helped me navigate difficult conversations at work with grace and kindness.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">R</div><div><div class="text-white text-sm font-semibold font-serif">Rakhi J.</div><div class="text-brand-accent text-xs uppercase tracking-wider">VP Employment Law</div></div></div></div></div>
-                  <div class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">Each time we met I had a fruitful career conversation and an action plan developed by the time we ended the conversation.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">P</div><div><div class="text-white text-sm font-semibold font-serif">Paul B.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Technical Leader</div></div></div></div></div>
-                  <div class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">I have made more progress toward my personal and professional goals in that short time than I have in years.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">K</div><div><div class="text-white text-sm font-semibold font-serif">Kristen L.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Banking Professional</div></div></div></div></div>
-                  <div class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">She has taught me valuable strategies to improve communication, how to set realistic expectations and boundaries, and the importance values play in all relationships.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">C</div><div><div class="text-white text-sm font-semibold font-serif">Carmen M.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Global Compensation Leader</div></div></div></div></div>
-                  <div class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">She also helped me make concrete action plans that I had to do every week, increasing my sense of achievement and progress, all of it in a judgement free environment.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">A</div><div><div class="text-white text-sm font-semibold font-serif">Anneli S.</div><div class="text-brand-accent text-xs uppercase tracking-wider">HSEQ Professional</div></div></div></div></div>
-                  <div class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">She is a compassionate coach, creative and always guides me to finding solutions from within.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">N</div><div><div class="text-white text-sm font-semibold font-serif">Natalia C.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Director, Legal</div></div></div></div></div>
-                  <div class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">Working with her as my coach helped me to achieve things I could not have done on my own.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">J</div><div><div class="text-white text-sm font-semibold font-serif">James C.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Executive Coaching Client</div></div></div></div></div>
-                  <div class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">Her ability to really hear what I had to say and to provide activities and materials that were extremely relevant to the goals I set, made it easy to stay focused and on-track.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">T</div><div><div class="text-white text-sm font-semibold font-serif">Tonya T.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Workplace Leader</div></div></div></div></div>
-                  <div class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">I would recommend Alison without hesitation to anyone interested in becoming a better leader.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">L</div><div><div class="text-white text-sm font-semibold font-serif">Ludovico M.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Chief Strategy Officer</div></div></div></div></div>
-                  <div class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">I have been more courageous, accomplished goals that I did not think were possible for me, and had difficult conversations that I normally would avoid with great ease and success.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">N</div><div><div class="text-white text-sm font-semibold font-serif">Norah L.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Global Account Lead</div></div></div></div></div>
-                </div>
+                  <template data-cms-template>
+                    <div class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">{{quote}}</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">{{initial}}</div><div><div class="text-white text-sm font-semibold font-serif">{{name}}</div><div class="text-brand-accent text-xs uppercase tracking-wider">{{role}}</div></div></div></div></div>
+                  </template>
+
+                    <div data-cms-item="0" class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">I all but begged my company to extend my contract to keep working with her.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">H</div><div><div class="text-white text-sm font-semibold font-serif">Harolyn A.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Managing Vice President</div></div></div></div></div>
+                  
+
+                    <div data-cms-item="1" class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">Through her amazing listening and coaching skills Alie helped me regain self confidence in my ability but also in my approach to balancing family and work.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">P</div><div><div class="text-white text-sm font-semibold font-serif">Paula B.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Senior Partner</div></div></div></div></div>
+                  
+
+                    <div data-cms-item="2" class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">Alie would push me to find ways to hold myself accountable to accomplish the goals I deemed important.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">M</div><div><div class="text-white text-sm font-semibold font-serif">Matt B.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Sr. Director</div></div></div></div></div>
+                  
+
+                    <div data-cms-item="3" class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">You helped me find common ground with my toughest negotiators, the kids, and helped me navigate difficult conversations at work with grace and kindness.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">R</div><div><div class="text-white text-sm font-semibold font-serif">Rakhi J.</div><div class="text-brand-accent text-xs uppercase tracking-wider">VP Employment Law</div></div></div></div></div>
+                  
+
+                    <div data-cms-item="4" class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">Each time we met I had a fruitful career conversation and an action plan developed by the time we ended the conversation.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">P</div><div><div class="text-white text-sm font-semibold font-serif">Paul B.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Technical Leader</div></div></div></div></div>
+                  
+
+                    <div data-cms-item="5" class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">I have made more progress toward my personal and professional goals in that short time than I have in years.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">K</div><div><div class="text-white text-sm font-semibold font-serif">Kristen L.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Banking Professional</div></div></div></div></div>
+                  
+
+                    <div data-cms-item="6" class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">She has taught me valuable strategies to improve communication, how to set realistic expectations and boundaries, and the importance values play in all relationships.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">C</div><div><div class="text-white text-sm font-semibold font-serif">Carmen M.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Global Compensation Leader</div></div></div></div></div>
+                  
+
+                    <div data-cms-item="7" class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">She also helped me make concrete action plans that I had to do every week, increasing my sense of achievement and progress, all of it in a judgement free environment.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">A</div><div><div class="text-white text-sm font-semibold font-serif">Anneli S.</div><div class="text-brand-accent text-xs uppercase tracking-wider">HSEQ Professional</div></div></div></div></div>
+                  
+
+                    <div data-cms-item="8" class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">She is a compassionate coach, creative and always guides me to finding solutions from within.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">N</div><div><div class="text-white text-sm font-semibold font-serif">Natalia C.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Director, Legal</div></div></div></div></div>
+                  
+
+                    <div data-cms-item="9" class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">Working with her as my coach helped me to achieve things I could not have done on my own.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">J</div><div><div class="text-white text-sm font-semibold font-serif">James C.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Executive Coaching Client</div></div></div></div></div>
+                  
+
+                    <div data-cms-item="10" class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">Her ability to really hear what I had to say and to provide activities and materials that were extremely relevant to the goals I set, made it easy to stay focused and on-track.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">T</div><div><div class="text-white text-sm font-semibold font-serif">Tonya T.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Workplace Leader</div></div></div></div></div>
+                  
+
+                    <div data-cms-item="11" class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">I would recommend Alison without hesitation to anyone interested in becoming a better leader.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">L</div><div><div class="text-white text-sm font-semibold font-serif">Ludovico M.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Chief Strategy Officer</div></div></div></div></div>
+                  
+
+                    <div data-cms-item="12" class="w-1/3 flex-shrink-0 px-2 md:px-6"><div class="testimonial-card bg-white/6 backdrop-blur-sm p-8 pt-8 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors h-full flex flex-col"><span class="block font-serif text-5xl text-brand-accent/50 leading-none mb-5 select-none">&ldquo;</span><p class="text-slate-300 italic leading-relaxed mb-8 flex-grow text-sm md:text-base">I have been more courageous, accomplished goals that I did not think were possible for me, and had difficult conversations that I normally would avoid with great ease and success.</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center font-bold text-brand-accent text-sm flex-shrink-0">N</div><div><div class="text-white text-sm font-semibold font-serif">Norah L.</div><div class="text-brand-accent text-xs uppercase tracking-wider">Global Account Lead</div></div></div></div></div>
+                  
+</div>
               </div>
             </div>
 
@@ -759,7 +870,7 @@
       </section>
 
       <!-- ─── ARTICLES ─── -->
-      <section class="py-24 bg-brand-warm">
+      <section class="py-24 bg-brand-warm" data-cms-section="articles" data-cms-label="Articles">
         <div class="container mx-auto px-6">
           <div
             class="flex flex-col md:flex-row justify-between items-end mb-12 reveal"
@@ -769,12 +880,11 @@
                 <div class="h-px w-8 bg-brand-accent/40 rounded-full"></div>
                 <span
                   class="text-xs font-bold uppercase tracking-widest text-brand-accent"
+                  data-cms="articles_eyebrow"
                   >The Blog</span
                 >
               </div>
-              <h2 class="font-serif text-4xl md:text-5xl text-brand-dark">
-                Latest Insights
-              </h2>
+              <h2 class="font-serif text-4xl md:text-5xl text-brand-dark" data-cms="articles_heading">Latest Insights</h2>
             </div>
             <a
               href="/articles/"
@@ -786,225 +896,222 @@
           </div>
 
           <div class="grid md:grid-cols-3 gap-8" id="home-articles-grid">
-            <div class="reveal delay-100">
-              <a
-                href="/article-6/"
-                class="group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-400 flex flex-col h-full border border-slate-100 hover:border-brand-accent/20"
-              >
-                <div class="h-52 overflow-hidden relative">
-                  <img
-                    src="/images/achievement-agreement-arms.webp"
-                    alt="Network With Purpose"
-                    loading="lazy"
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div
-                    class="absolute inset-0 bg-gradient-to-t from-brand-dark/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  ></div>
-                  <div
-                    class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-accent rounded-sm"
-                  >
-                    Leadership
+              <div class="reveal delay-100">
+                <a
+                  href="/article-6/"
+                  class="group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-400 flex flex-col h-full border border-slate-100 hover:border-brand-accent/20"
+                >
+                  <div class="h-52 overflow-hidden relative">
+                    <img
+                      src="/images/achievement-agreement-arms.webp"
+                      alt="Network With Purpose"
+                      loading="lazy"
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      data-cms-img="article6_image"
+                      data-cms-attr="alt:article6_title"
+                      data-cms-img-max="900"
+                    />
+                    <div
+                      class="absolute inset-0 bg-gradient-to-t from-brand-dark/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    ></div>
+                    <div
+                      class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-accent rounded-sm"
+                      data-cms="article6_category"
+                    >Leadership</div>
                   </div>
-                </div>
-                <div class="p-7 flex flex-col flex-grow">
-                  <div class="text-slate-400 text-xs flex items-center mb-3">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="w-3 h-3 mr-1.5"
-                      aria-hidden="true"
-                    >
-                      <path d="M8 2v4" />
-                      <path d="M16 2v4" />
-                      <rect width="18" height="18" x="3" y="4" rx="2" />
-                      <path d="M3 10h18" /></svg
-                    >November 28, 2025
+                  <div class="p-7 flex flex-col flex-grow">
+                    <div class="text-slate-400 text-xs flex items-center mb-3">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="w-3 h-3 mr-1.5"
+                        aria-hidden="true"
+                      >
+                        <path d="M8 2v4" />
+                        <path d="M16 2v4" />
+                        <rect width="18" height="18" x="3" y="4" rx="2" />
+                        <path d="M3 10h18" /></svg
+                      ><span data-cms="article6_date">November 28, 2025</span>
+                    </div>
+                    <h3
+                      class="font-serif text-xl text-brand-dark mb-3 leading-snug group-hover:text-brand-accent transition-colors duration-200"
+                      data-cms="article6_title"
+                    >Network With Purpose</h3>
+                    <p
+                      class="text-slate-500 text-sm leading-relaxed line-clamp-3 mb-5 flex-grow"
+                      data-cms="article6_excerpt"
+                    >Tips to network with intention rather than chance. By getting clear on what you want from each connection and understanding the roles people can play in your growth, you can build relationships that create opportunity, visibility, and momentum.</p>
+                    <span
+                      class="text-brand-dark text-xs font-bold uppercase tracking-wider flex items-center gap-2 group-hover:text-brand-accent transition-colors"
+                      >Read Article
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200"
+                        aria-hidden="true"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" /></svg
+                    ></span>
                   </div>
-                  <h3
-                    class="font-serif text-xl text-brand-dark mb-3 leading-snug group-hover:text-brand-accent transition-colors duration-200"
-                  >
-                    Network With Purpose
-                  </h3>
-                  <p
-                    class="text-slate-500 text-sm leading-relaxed line-clamp-3 mb-5 flex-grow"
-                  >
-                    Tips to network with intention rather than chance. By
-                    getting clear on what you want from each connection, you can
-                    build relationships that create opportunity, visibility, and
-                    momentum.
-                  </p>
-                  <span
-                    class="text-brand-dark text-xs font-bold uppercase tracking-wider flex items-center gap-2 group-hover:text-brand-accent transition-colors"
-                    >Read Article
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200"
-                      aria-hidden="true"
-                    >
-                      <path d="M5 12h14" />
-                      <path d="m12 5 7 7-7 7" /></svg
-                  ></span>
-                </div>
-              </a>
-            </div>
-            <div class="reveal delay-200">
-              <a
-                href="/article-5/"
-                class="group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-400 flex flex-col h-full border border-slate-100 hover:border-brand-accent/20"
-              >
-                <div class="h-52 overflow-hidden relative">
-                  <img
-                    src="/images/close-up-young-colleagues-having-meeting.webp"
-                    alt="From Presentation to Impact"
-                    loading="lazy"
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div
-                    class="absolute inset-0 bg-gradient-to-t from-brand-dark/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  ></div>
-                  <div
-                    class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-accent rounded-sm"
-                  >
-                    Executive Presence
+                </a>
+              </div>
+            
+
+              <div class="reveal delay-200">
+                <a
+                  href="/article-5/"
+                  class="group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-400 flex flex-col h-full border border-slate-100 hover:border-brand-accent/20"
+                >
+                  <div class="h-52 overflow-hidden relative">
+                    <img
+                      src="/images/close-up-young-colleagues-having-meeting.webp"
+                      alt="From Presentation to Impact"
+                      loading="lazy"
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      data-cms-img="article5_image"
+                      data-cms-attr="alt:article5_title"
+                      data-cms-img-max="900"
+                    />
+                    <div
+                      class="absolute inset-0 bg-gradient-to-t from-brand-dark/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    ></div>
+                    <div
+                      class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-accent rounded-sm"
+                      data-cms="article5_category"
+                    >Executive Presence</div>
                   </div>
-                </div>
-                <div class="p-7 flex flex-col flex-grow">
-                  <div class="text-slate-400 text-xs flex items-center mb-3">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="w-3 h-3 mr-1.5"
-                      aria-hidden="true"
-                    >
-                      <path d="M8 2v4" />
-                      <path d="M16 2v4" />
-                      <rect width="18" height="18" x="3" y="4" rx="2" />
-                      <path d="M3 10h18" /></svg
-                    >November 28, 2025
+                  <div class="p-7 flex flex-col flex-grow">
+                    <div class="text-slate-400 text-xs flex items-center mb-3">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="w-3 h-3 mr-1.5"
+                        aria-hidden="true"
+                      >
+                        <path d="M8 2v4" />
+                        <path d="M16 2v4" />
+                        <rect width="18" height="18" x="3" y="4" rx="2" />
+                        <path d="M3 10h18" /></svg
+                      ><span data-cms="article5_date">November 28, 2025</span>
+                    </div>
+                    <h3
+                      class="font-serif text-xl text-brand-dark mb-3 leading-snug group-hover:text-brand-accent transition-colors duration-200"
+                      data-cms="article5_title"
+                    >From Presentation to Impact</h3>
+                    <p
+                      class="text-slate-500 text-sm leading-relaxed line-clamp-3 mb-5 flex-grow"
+                      data-cms="article5_excerpt"
+                    >Tips to transform routine meetings into strategic moments of influence. By shifting focus beyond the deck itself and defining success for everyone involved, leaders can strengthen alignment, build trust, and drive meaningful outcomes.</p>
+                    <span
+                      class="text-brand-dark text-xs font-bold uppercase tracking-wider flex items-center gap-2 group-hover:text-brand-accent transition-colors"
+                      >Read Article
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200"
+                        aria-hidden="true"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" /></svg
+                    ></span>
                   </div>
-                  <h3
-                    class="font-serif text-xl text-brand-dark mb-3 leading-snug group-hover:text-brand-accent transition-colors duration-200"
-                  >
-                    From Presentation to Impact
-                  </h3>
-                  <p
-                    class="text-slate-500 text-sm leading-relaxed line-clamp-3 mb-5 flex-grow"
-                  >
-                    Tips to transform routine meetings into strategic moments of
-                    influence. Leaders who define success for everyone involved
-                    can strengthen alignment, build trust, and drive meaningful
-                    outcomes.
-                  </p>
-                  <span
-                    class="text-brand-dark text-xs font-bold uppercase tracking-wider flex items-center gap-2 group-hover:text-brand-accent transition-colors"
-                    >Read Article
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200"
-                      aria-hidden="true"
-                    >
-                      <path d="M5 12h14" />
-                      <path d="m12 5 7 7-7 7" /></svg
-                  ></span>
-                </div>
-              </a>
-            </div>
-            <div class="reveal delay-300">
-              <a
-                href="/article-1/"
-                class="group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-400 flex flex-col h-full border border-slate-100 hover:border-brand-accent/20"
-              >
-                <div class="h-52 overflow-hidden relative">
-                  <img
-                    src="/images/photo-1454165804606-c3d57bc86b40.webp"
-                    alt="3 Tools Every Working Parent Needs"
-                    loading="lazy"
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div
-                    class="absolute inset-0 bg-gradient-to-t from-brand-dark/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  ></div>
-                  <div
-                    class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-accent rounded-sm"
-                  >
-                    Productivity
+                </a>
+              </div>
+            
+
+              <div class="reveal delay-300">
+                <a
+                  href="/article-1/"
+                  class="group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-400 flex flex-col h-full border border-slate-100 hover:border-brand-accent/20"
+                >
+                  <div class="h-52 overflow-hidden relative">
+                    <img
+                      src="/images/photo-1454165804606-c3d57bc86b40.webp"
+                      alt="3 Tools Every Working Parent Needs"
+                      loading="lazy"
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      data-cms-img="article1_image"
+                      data-cms-attr="alt:article1_title"
+                      data-cms-img-max="900"
+                    />
+                    <div
+                      class="absolute inset-0 bg-gradient-to-t from-brand-dark/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    ></div>
+                    <div
+                      class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-accent rounded-sm"
+                      data-cms="article1_category"
+                    >Productivity</div>
                   </div>
-                </div>
-                <div class="p-7 flex flex-col flex-grow">
-                  <div class="text-slate-400 text-xs flex items-center mb-3">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="w-3 h-3 mr-1.5"
-                      aria-hidden="true"
-                    >
-                      <path d="M8 2v4" />
-                      <path d="M16 2v4" />
-                      <rect width="18" height="18" x="3" y="4" rx="2" />
-                      <path d="M3 10h18" /></svg
-                    >October 12, 2023
+                  <div class="p-7 flex flex-col flex-grow">
+                    <div class="text-slate-400 text-xs flex items-center mb-3">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="w-3 h-3 mr-1.5"
+                        aria-hidden="true"
+                      >
+                        <path d="M8 2v4" />
+                        <path d="M16 2v4" />
+                        <rect width="18" height="18" x="3" y="4" rx="2" />
+                        <path d="M3 10h18" /></svg
+                      ><span data-cms="article1_date">October 12, 2023</span>
+                    </div>
+                    <h3
+                      class="font-serif text-xl text-brand-dark mb-3 leading-snug group-hover:text-brand-accent transition-colors duration-200"
+                      data-cms="article1_title"
+                    >3 Tools Every Working Parent Needs</h3>
+                    <p
+                      class="text-slate-500 text-sm leading-relaxed line-clamp-3 mb-5 flex-grow"
+                      data-cms="article1_excerpt"
+                    >Tips to better manage stress levels when working from home during challenging times. With widespread mandates for all non-essential employees, the boundaries between work and family have never been more blurred.</p>
+                    <span
+                      class="text-brand-dark text-xs font-bold uppercase tracking-wider flex items-center gap-2 group-hover:text-brand-accent transition-colors"
+                      >Read Article
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200"
+                        aria-hidden="true"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" /></svg
+                    ></span>
                   </div>
-                  <h3
-                    class="font-serif text-xl text-brand-dark mb-3 leading-snug group-hover:text-brand-accent transition-colors duration-200"
-                  >
-                    3 Tools Every Working Parent Needs
-                  </h3>
-                  <p
-                    class="text-slate-500 text-sm leading-relaxed line-clamp-3 mb-5 flex-grow"
-                  >
-                    Tips to better manage stress levels when working from home.
-                    With the blurred lines between professional responsibilities
-                    and parental duties, intentional boundaries are essential.
-                  </p>
-                  <span
-                    class="text-brand-dark text-xs font-bold uppercase tracking-wider flex items-center gap-2 group-hover:text-brand-accent transition-colors"
-                    >Read Article
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200"
-                      aria-hidden="true"
-                    >
-                      <path d="M5 12h14" />
-                      <path d="m12 5 7 7-7 7" /></svg
-                  ></span>
-                </div>
-              </a>
-            </div>
-          </div>
+                </a>
+              </div>
+            
+</div>
 
           <div class="mt-10 text-center md:hidden reveal">
             <a
@@ -1019,7 +1126,7 @@
       </section>
 
       <!-- ─── CTA BAND ─── -->
-      <section class="py-24 bg-brand-accent relative overflow-hidden">
+      <section class="py-24 bg-brand-accent relative overflow-hidden" data-cms-section="cta" data-cms-label="Call to Action">
         <div
           class="absolute inset-0 opacity-10"
           style="
@@ -1036,23 +1143,19 @@
         <div class="container mx-auto px-6 text-center relative z-10 reveal">
           <p
             class="text-white/70 text-xs font-bold uppercase tracking-widest mb-4"
-          >
-            Ready to Begin?
-          </p>
+            data-cms="cta_eyebrow"
+          >Ready to Begin?</p>
           <h2
             class="font-serif text-4xl md:text-5xl text-white mb-6 leading-tight"
           >
-            Your Next Chapter<br />Starts Here
+            <span data-cms="cta_heading_line1">Your Next Chapter</span><br /><span data-cms="cta_heading_line2">Starts Here</span>
           </h2>
-          <p class="text-white/80 max-w-lg mx-auto mb-10 leading-relaxed">
-            Book a complimentary discovery session — a free, no-obligation
-            conversation to explore what's possible.
-          </p>
+          <p class="text-white/80 max-w-lg mx-auto mb-10 leading-relaxed" data-cms="cta_body">Book a complimentary discovery session — a free, no-obligation conversation to explore what's possible.</p>
           <a
             href="/contact/"
             class="inline-flex items-center gap-2 px-8 py-4 rounded font-semibold tracking-widest text-xs uppercase bg-brand-dark text-white hover:bg-brand-copper transition-all duration-300 shadow-lg hover:shadow-xl"
           >
-            Book Free Discovery Session
+            <span data-cms="cta_button">Book Free Discovery Session</span>
             <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </a>
         </div>
@@ -1060,13 +1163,13 @@
     </main>
 
     <!-- ─── FOOTER ─── -->
-    <footer id="main-footer" class="bg-brand-primary text-white footer-pattern">
+    <footer id="main-footer" class="bg-brand-primary text-white footer-pattern" data-cms-section="footer" data-cms-label="Footer">
   <div class="container mx-auto px-6 py-16">
     <div class="grid md:grid-cols-4 gap-12 mb-12">
       <div class="md:col-span-2">
         <h2 class="font-serif text-3xl mb-2">Alison Goldstein</h2>
-        <p class="text-brand-accent text-xs font-bold uppercase tracking-widest mb-4">Global Leadership &amp; Transition Coach</p>
-        <p class="text-slate-400 text-sm leading-relaxed max-w-sm mb-6">Partnering with individuals and organizations worldwide to navigate change, build resilience, and foster leadership that transcends borders.</p>
+        <p class="text-brand-accent text-xs font-bold uppercase tracking-widest mb-4" data-cms="footer_tagline" data-cms-label="Footer Tagline">Global Leadership &amp; Transition Coach</p>
+        <p class="text-slate-400 text-sm leading-relaxed max-w-sm mb-6" data-cms="footer_bio" data-cms-label="Footer Bio">Partnering with individuals and organizations worldwide to navigate change, build resilience, and foster leadership that transcends borders.</p>
         <div class="flex gap-3">
           <a href="https://www.linkedin.com/in/coach-alison-goldstein" aria-label="LinkedIn" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent cursor-pointer transition-all duration-300">
             <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-white" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -1095,7 +1198,7 @@
       </div>
     </div>
     <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
-      <p class="text-slate-500 text-xs">© 2025 Alison Goldstein. All rights reserved.</p>
+      <p class="text-slate-500 text-xs" data-cms="footer_copyright" data-cms-label="Copyright Line">© 2025 Alison Goldstein. All rights reserved.</p>
       <div class="flex gap-5 items-center">
         <img src="/images/CPC-Badge.webp"    alt="iPEC CPC Certified Coach"        loading="lazy" class="h-16 opacity-50 hover:opacity-90 transition-opacity" />
         <img src="/images/ELI-MP-Badge.webp" alt="ELI Master Practitioner"         loading="lazy" class="h-16 opacity-50 hover:opacity-90 transition-opacity" />
@@ -1122,7 +1225,10 @@
         var container = document.getElementById("carousel-container");
         var prevBtn = document.getElementById("prev-btn");
         var nextBtn = document.getElementById("next-btn");
-        var total = track.children.length;
+        var slides = Array.prototype.filter.call(track.children, function (c) {
+          return c.tagName !== "TEMPLATE";
+        });
+        var total = slides.length;
         var duration = 9000;
         var visible = 3;
         var cooldown = 10000;
@@ -1132,10 +1238,10 @@
         container.style.userSelect = "none";
         var clone = visible;
         for (var i = 0; i < clone; i++) {
-          track.prepend(track.children[total - clone + i].cloneNode(true));
+          track.insertBefore(slides[total - clone + i].cloneNode(true), slides[0]);
         }
         for (var j = 0; j < clone; j++) {
-          track.appendChild(track.children[clone + j].cloneNode(true));
+          track.appendChild(slides[j].cloneNode(true));
         }
 
         var totalSlides = total + 2 * clone;

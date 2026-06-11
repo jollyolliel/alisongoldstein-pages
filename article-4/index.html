@@ -154,7 +154,7 @@
 </header>
 
     <main class="flex-grow pt-0">
-      <div class="flex flex-col lg:flex-row min-h-screen">
+      <div class="flex flex-col lg:flex-row min-h-screen" data-cms-section="article" data-cms-label="Article">
         <div
           class="w-full lg:w-7/12 xl:w-2/3 px-6 md:px-12 lg:px-24 py-24 lg:py-32 order-2 lg:order-1 bg-white"
         >
@@ -186,22 +186,23 @@
               <div class="flex items-center gap-4 mb-6">
                 <span
                   id="detail-category"
+                  data-cms="article4_category"
                   class="text-brand-accent text-xs font-bold uppercase tracking-widest px-2 py-1 bg-brand-beige rounded-sm"
                   >Professional Development</span
                 >
                 <span class="w-1 h-1 rounded-full bg-slate-300"></span>
                 <span
                   id="detail-date"
+                  data-cms="article4_date"
                   class="text-slate-400 text-xs font-bold uppercase tracking-widest"
                   >July 02, 2023</span
                 >
               </div>
               <h1
                 id="detail-title"
+                data-cms="article4_title"
                 class="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-dark leading-[1.1] mb-8"
-              >
-                Secret: Even Coaches Get Coached
-              </h1>
+              >Secret: Even Coaches Get Coached</h1>
 
               <div class="flex items-center border-b border-slate-100 pb-8">
                 <div
@@ -227,9 +228,10 @@
             <!-- Content Area -->
             <div
               id="detail-content"
+              data-cms-html="article4_body"
+              data-cms-label="Article Body"
               class="text-slate-600 text-lg leading-loose mb-16 space-y-8"
-            >
-              <p
+            ><p
                 class="entry-animate drop-cap mb-6 text-xl md:text-2xl font-light leading-relaxed text-slate-700"
                 style="animation-delay: 0.25s"
               >
@@ -373,8 +375,7 @@
                 high fives, the applause, the laughter and the cheering from the
                 crowds. Super Mom crossed the finish line that day and I was
                 extremely proud.
-              </p>
-            </div>
+              </p></div>
 
             <div
               class="bg-brand-warm p-8 rounded-xl border-l-4 border-brand-accent entry-animate"
@@ -446,8 +447,11 @@
         >
           <img
             id="detail-image"
+            data-cms-img="article4_image"
+            data-cms-attr="alt:article4_title"
+            data-cms-img-max="1600"
             src="/images/photo-1556761175-5973dc0f32e7.webp"
-            alt="Article image"
+            alt="Secret: Even Coaches Get Coached"
             loading="eager"
             class="w-full h-full object-cover"
           />

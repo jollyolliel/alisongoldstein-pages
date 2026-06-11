@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Site Editor Login</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0f172a;
+      --card:     #1e293b;
+      --accent:   #d97706;
+      --gold:     #ca8a04;
+      --text:     #f1f5f9;
+      --muted:    #94a3b8;
+      --border:   rgba(255,255,255,0.08);
+      --focus:    rgba(217,119,6,0.45);
+      --input-bg: #0c1424;
+      --error-bg: rgba(127,29,29,0.5);
+      --error-border: rgba(239,68,68,0.4);
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    }
+
+    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+
+    .page { position: relative; z-index: 1; width: 100%; padding: 24px; }
+
+    .card {
+      max-width: 400px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 36px 36px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+
+    .brand { display: flex; flex-direction: column; align-items: center; margin-bottom: 32px; gap: 6px; }
+    .brand-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); margin-bottom: 6px; }
+    .brand-name { font-family: Georgia, 'Times New Roman', serif; font-size: 20px; font-weight: 600; letter-spacing: 0.02em; }
+    .brand-sub { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+
+    .divider { height: 1px; background: var(--border); margin: 0 0 28px; }
+
+    .field { margin-bottom: 16px; }
+    .field label {
+      display: block;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+      opacity: 0.9;
+    }
+    .field input {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: var(--text);
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .field input:focus { border-color: rgba(217,119,6,0.55); box-shadow: 0 0 0 3px var(--focus); }
+    .field input::placeholder { color: rgba(148,163,184,0.35); }
+
+    #submit-btn {
+      width: 100%;
+      margin-top: 8px;
+      height: 44px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.15s, opacity 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    #submit-btn:hover:not(:disabled) { background: var(--gold); }
+    #submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .btn-spinner {
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      display: none;
+    }
+    .btn-spinner.active { display: block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    #error-msg {
+      margin-top: 14px;
+      padding: 10px 14px;
+      background: var(--error-bg);
+      border: 1px solid var(--error-border);
+      border-radius: 8px;
+      font-size: 13px;
+      color: #fca5a5;
+      text-align: center;
+      display: none;
+    }
+    #error-msg.visible { display: block; }
+
+    .card-footer { margin-top: 24px; text-align: center; font-size: 11px; color: var(--muted); opacity: 0.6; }
+  </style>
+</head>
+<body>
+
+  <!-- Encrypted admin HTML is embedded here by build/encrypt.js -->
+  <script id="encrypted-admin" type="text/plain"><!-- ENCRYPTED_ADMIN_BLOB --></script>
+
+  <div class="page">
+    <div class="card">
+      <div class="brand">
+        <div class="brand-dot"></div>
+        <div class="brand-name">{{SITE_NAME}}</div>
+        <div class="brand-sub">Site Editor</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <form id="login-form" autocomplete="on">
+        <div class="field">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" autocomplete="username" placeholder="your username" required />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" autocomplete="current-password" placeholder="your password" required />
+        </div>
+        <button type="submit" id="submit-btn">
+          <div class="btn-spinner" id="btn-spinner"></div>
+          <span id="btn-text">Sign In</span>
+        </button>
+        <div id="error-msg"></div>
+      </form>
+
+      <div class="card-footer">Secured with AES-256 client-side encryption</div>
+    </div>
+  </div>
+
+  <script>
+    var PBKDF2_ITER = 200000;
+    var KEY_BITS    = 256;
+
+    function base64ToBytes(b64) {
+      var bin = atob(b64);
+      var bytes = new Uint8Array(bin.length);
+      for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return bytes;
+    }
+
+    function deriveKey(keyMaterial, salt) {
+      var enc = new TextEncoder();
+      return window.crypto.subtle.importKey(
+        "raw", enc.encode(keyMaterial), { name: "PBKDF2" }, false, ["deriveKey"]
+      ).then(function (baseKey) {
+        return window.crypto.subtle.deriveKey(
+          { name: "PBKDF2", salt: salt, iterations: PBKDF2_ITER, hash: "SHA-256" },
+          baseKey,
+          { name: "AES-GCM", length: KEY_BITS },
+          false,
+          ["decrypt"]
+        );
+      });
+    }
+
+    function showError(msg) {
+      var el = document.getElementById("error-msg");
+      el.textContent = msg;
+      el.classList.add("visible");
+    }
+
+    function setLoading(on) {
+      document.getElementById("submit-btn").disabled = on;
+      document.getElementById("btn-spinner").classList.toggle("active", on);
+      document.getElementById("btn-text").textContent = on ? "Checking…" : "Sign In";
+    }
+
+    // Built without credentials (placeholder blob)? Show setup
+    // instructions immediately instead of a dead login form.
+    (function () {
+      var blob = document.getElementById("encrypted-admin").textContent.trim();
+      if (!blob || blob.indexOf("<!--") === 0) {
+        document.getElementById("username").disabled = true;
+        document.getElementById("password").disabled = true;
+        document.getElementById("submit-btn").disabled = true;
+        showError("Admin not configured. Set the CMS_ADMIN_USER, CMS_ADMIN_PASS and CMS_GH_TOKEN environment variables in your build environment, then rebuild and redeploy.");
+      }
+    })();
+
+    document.getElementById("login-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      var username = document.getElementById("username").value.trim();
+      var password = document.getElementById("password").value;
+      var blob     = document.getElementById("encrypted-admin").textContent.trim();
+
+      document.getElementById("error-msg").classList.remove("visible");
+
+      if (!blob || blob.indexOf("<!--") === 0) {
+        showError("Admin editor has not been built yet. Run build/encrypt.js first.");
+        return;
+      }
+
+      var parts = blob.split(":");
+      if (parts.length !== 3) {
+        showError("Encrypted blob is malformed. Rebuild the site.");
+        return;
+      }
+
+      setLoading(true);
+
+      var salt       = base64ToBytes(parts[0]);
+      var iv         = base64ToBytes(parts[1]);
+      var ciphertext = base64ToBytes(parts[2]);
+
+      // Key material = username:password (same formula as encrypt.js)
+      var keyMaterial = username + ":" + password;
+
+      deriveKey(keyMaterial, salt)
+        .then(function (key) {
+          return window.crypto.subtle.decrypt({ name: "AES-GCM", iv: iv }, key, ciphertext);
+        })
+        .then(function (decrypted) {
+          var html = new TextDecoder().decode(decrypted);
+          document.open();
+          document.write(html);
+          document.close();
+        })
+        .catch(function () {
+          setLoading(false);
+          showError("Incorrect username or password.");
+        });
+    });
+  </script>
+</body>
+</html>

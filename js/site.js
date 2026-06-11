@@ -86,6 +86,11 @@
     if (typeof lucide !== "undefined" && lucide.createIcons) lucide.createIcons();
   };
 
+  /* CMS admin preview: re-render lucide icons after a list patch resets them */
+  window.cmsAfterPatch = function () {
+    if (typeof lucide !== "undefined" && lucide.createIcons) lucide.createIcons();
+  };
+
   /* ─── Hero accent bar: hide when headline overlaps ─── */
   window.initHeroAccentBar = function () {
     var bar      = document.getElementById("hero-accent-bar");

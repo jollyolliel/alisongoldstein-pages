@@ -6,7 +6,12 @@
     "build:css":    "tailwindcss -i ./css/input.css -o ./css/output.css --minify",
     "build:lucide": "node build-lucide.js",
     "build:html":   "node build.js",
-    "build":        "npm run build:lucide && npm run build:html && npm run build:css",
+    "build:cms":    "node build/stamp.js && node build/encrypt.js",
+    "build:sitemap": "node build/sitemap.js",
+    "build":        "npm run build:lucide && npm run build:html && npm run build:css && npm run build:cms && npm run build:sitemap",
+    "build:deploy": "npm run build && node build/deploy.js",
+    "cms:scan":     "node build/scan.js",
+    "cms:check":    "node build/stamp.js --check",
     "watch:css":    "tailwindcss -i ./css/input.css -o ./css/output.css --watch"
   },
   "devDependencies": {

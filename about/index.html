@@ -78,24 +78,22 @@
     <main class="flex-grow pt-0">
 
       <!-- ─── PAGE HERO ─── -->
-      <section class="pt-32 pb-16 bg-white relative overflow-hidden">
+      <section class="pt-32 pb-16 bg-white relative overflow-hidden" data-cms-section="about-hero" data-cms-label="Page Hero">
         <div class="absolute top-0 right-0 w-1/3 h-full opacity-5" style="background: radial-gradient(ellipse at top right, #d97706 0%, transparent 70%);"></div>
         <div class="container mx-auto px-6 relative">
           <div class="max-w-2xl">
             <div class="flex items-center gap-3 mb-5 reveal">
               <div class="h-px w-8 bg-brand-accent/40 rounded-full"></div>
-              <span class="text-xs font-bold uppercase tracking-widest text-brand-accent">My Journey</span>
+              <span class="text-xs font-bold uppercase tracking-widest text-brand-accent" data-cms="about_eyebrow">My Journey</span>
             </div>
-            <h1 class="font-serif text-5xl md:text-6xl text-brand-dark mb-6 leading-tight reveal delay-100">About<br /><em class="not-italic text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-brand-gold">Alison</em></h1>
-            <p class="text-lg text-slate-600 leading-relaxed max-w-xl reveal delay-200">
-              Engineer. Analyst. Global nomad. Coach. A career that never followed a straight line — and a life that prepared her for exactly this work.
-            </p>
+            <h1 class="font-serif text-5xl md:text-6xl text-brand-dark mb-6 leading-tight reveal delay-100"><span data-cms="about_heading_line1">About</span><br /><em class="not-italic text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-brand-gold" data-cms="about_heading_accent">Alison</em></h1>
+            <p class="text-lg text-slate-600 leading-relaxed max-w-xl reveal delay-200" data-cms="about_subtext">Engineer. Analyst. Global nomad. Coach. A career that never followed a straight line — and a life that prepared her for exactly this work.</p>
           </div>
         </div>
       </section>
 
       <!-- ─── MAIN CONTENT ─── -->
-      <section class="py-16 bg-white">
+      <section class="py-16 bg-white" data-cms-section="about-main" data-cms-label="My Story">
         <div class="container mx-auto px-6">
           <div class="flex flex-col lg:flex-row gap-14">
 
@@ -105,66 +103,94 @@
 
                 <!-- Photo -->
                 <div class="relative reveal-left">
-                  <img src="/images/cropped-IMG_0561-4.webp" alt="Alison Goldstein" loading="eager" class="rounded-2xl shadow-xl w-full" />
+                  <img src="/images/cropped-IMG_0561-4.webp" alt="Alison Goldstein" loading="eager" class="rounded-2xl shadow-xl w-full" data-cms-img="about_photo" data-cms-img-max="900" data-cms-attr="alt:about_photo_alt" />
                   <div class="absolute -bottom-5 -right-5 bg-brand-dark text-white px-5 py-3 rounded-xl shadow-lg border border-white/10 hidden md:block">
-                    <p class="font-serif italic text-sm text-slate-300 leading-snug max-w-44">"I see people not for what they lack, but for their potential."</p>
+                    <p class="font-serif italic text-sm text-slate-300 leading-snug max-w-44" data-cms="about_photo_quote">&quot;I see people not for what they lack, but for their potential.&quot;</p>
                   </div>
                 </div>
 
                 <!-- Credentials -->
                 <div class="bg-brand-warm rounded-2xl p-6 border border-slate-100 reveal-left delay-100">
-                  <h3 class="text-xs font-bold uppercase tracking-widest text-brand-accent mb-5">Credentials</h3>
-                  <ul class="space-y-4">
-                    <li class="flex items-start gap-3">
-                      <div class="w-5 h-5 rounded-full bg-brand-accent/10 flex items-center justify-center mt-0.5 flex-shrink-0">
-                        <i data-lucide="award" class="w-3 h-3 text-brand-accent"></i>
+                  <h3 class="text-xs font-bold uppercase tracking-widest text-brand-accent mb-5" data-cms="about_credentials_heading">Credentials</h3>
+                  <div class="space-y-4" data-cms-list="about_credentials" data-cms-label="Credentials" data-cms-min="1" data-cms-max="8">
+                    <template data-cms-template>
+                      <div class="flex items-start gap-3">
+                        <div class="w-5 h-5 rounded-full bg-brand-accent/10 flex items-center justify-center mt-0.5 flex-shrink-0">
+                          <i data-lucide="{{icon}}" class="w-3 h-3 text-brand-accent"></i>
+                        </div>
+                        <span class="text-sm text-slate-600 leading-snug">{{text}}</span>
                       </div>
-                      <span class="text-sm text-slate-600 leading-snug">ICF Professional Certified Coach (PCC)</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <div class="w-5 h-5 rounded-full bg-brand-accent/10 flex items-center justify-center mt-0.5 flex-shrink-0">
-                        <i data-lucide="award" class="w-3 h-3 text-brand-accent"></i>
+                    </template>
+
+                      <div data-cms-item="0" class="flex items-start gap-3">
+                        <div class="w-5 h-5 rounded-full bg-brand-accent/10 flex items-center justify-center mt-0.5 flex-shrink-0">
+                          <i data-lucide="award" class="w-3 h-3 text-brand-accent"></i>
+                        </div>
+                        <span class="text-sm text-slate-600 leading-snug">ICF Professional Certified Coach (PCC)</span>
                       </div>
-                      <span class="text-sm text-slate-600 leading-snug">iPEC Certified Professional Coach</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <div class="w-5 h-5 rounded-full bg-brand-accent/10 flex items-center justify-center mt-0.5 flex-shrink-0">
-                        <i data-lucide="award" class="w-3 h-3 text-brand-accent"></i>
+                    
+
+                      <div data-cms-item="1" class="flex items-start gap-3">
+                        <div class="w-5 h-5 rounded-full bg-brand-accent/10 flex items-center justify-center mt-0.5 flex-shrink-0">
+                          <i data-lucide="award" class="w-3 h-3 text-brand-accent"></i>
+                        </div>
+                        <span class="text-sm text-slate-600 leading-snug">iPEC Certified Professional Coach</span>
                       </div>
-                      <span class="text-sm text-slate-600 leading-snug">ELI Master Practitioner</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <div class="w-5 h-5 rounded-full bg-brand-accent/10 flex items-center justify-center mt-0.5 flex-shrink-0">
-                        <i data-lucide="graduation-cap" class="w-3 h-3 text-brand-accent"></i>
+                    
+
+                      <div data-cms-item="2" class="flex items-start gap-3">
+                        <div class="w-5 h-5 rounded-full bg-brand-accent/10 flex items-center justify-center mt-0.5 flex-shrink-0">
+                          <i data-lucide="award" class="w-3 h-3 text-brand-accent"></i>
+                        </div>
+                        <span class="text-sm text-slate-600 leading-snug">ELI Master Practitioner</span>
                       </div>
-                      <span class="text-sm text-slate-600 leading-snug">B.S. Mechanical Engineering, Northwestern University</span>
-                    </li>
-                  </ul>
+                    
+
+                      <div data-cms-item="3" class="flex items-start gap-3">
+                        <div class="w-5 h-5 rounded-full bg-brand-accent/10 flex items-center justify-center mt-0.5 flex-shrink-0">
+                          <i data-lucide="graduation-cap" class="w-3 h-3 text-brand-accent"></i>
+                        </div>
+                        <span class="text-sm text-slate-600 leading-snug">B.S. Mechanical Engineering, Northwestern University</span>
+                      </div>
+                    
+</div>
                 </div>
 
                 <!-- Stats mini -->
-                <div class="grid grid-cols-2 gap-3 reveal-left delay-200">
-                  <div class="bg-brand-dark text-center p-4 rounded-xl">
-                    <div class="font-serif text-2xl font-bold text-brand-accent">4,000+</div>
-                    <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Hours</div>
-                  </div>
-                  <div class="bg-brand-dark text-center p-4 rounded-xl">
-                    <div class="font-serif text-2xl font-bold text-brand-accent">400+</div>
-                    <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Clients</div>
-                  </div>
-                  <div class="bg-brand-dark text-center p-4 rounded-xl">
-                    <div class="font-serif text-2xl font-bold text-brand-accent">23+</div>
-                    <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Years</div>
-                  </div>
-                  <div class="bg-brand-dark text-center p-4 rounded-xl">
-                    <div class="font-serif text-2xl font-bold text-brand-accent">6</div>
-                    <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Regions</div>
-                  </div>
-                </div>
+                <div class="grid grid-cols-2 gap-3 reveal-left delay-200" data-cms-list="about_stats" data-cms-label="Mini Stats" data-cms-min="2" data-cms-max="6">
+                  <template data-cms-template>
+                    <div class="bg-brand-dark text-center p-4 rounded-xl">
+                      <div class="font-serif text-2xl font-bold text-brand-accent">{{num}}</div>
+                      <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">{{label}}</div>
+                    </div>
+                  </template>
 
-                <a href="/contact/" class="w-full px-6 py-3.5 rounded font-semibold tracking-widest text-xs uppercase bg-brand-dark text-white hover:bg-brand-accent transition-all duration-300 flex justify-center reveal-left delay-300">
-                  Work With Me
-                </a>
+                    <div data-cms-item="0" class="bg-brand-dark text-center p-4 rounded-xl">
+                      <div class="font-serif text-2xl font-bold text-brand-accent">4,000+</div>
+                      <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Hours</div>
+                    </div>
+                  
+
+                    <div data-cms-item="1" class="bg-brand-dark text-center p-4 rounded-xl">
+                      <div class="font-serif text-2xl font-bold text-brand-accent">400+</div>
+                      <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Clients</div>
+                    </div>
+                  
+
+                    <div data-cms-item="2" class="bg-brand-dark text-center p-4 rounded-xl">
+                      <div class="font-serif text-2xl font-bold text-brand-accent">23+</div>
+                      <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Years</div>
+                    </div>
+                  
+
+                    <div data-cms-item="3" class="bg-brand-dark text-center p-4 rounded-xl">
+                      <div class="font-serif text-2xl font-bold text-brand-accent">6</div>
+                      <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Regions</div>
+                    </div>
+                  
+</div>
+
+                <a href="/contact/" class="w-full px-6 py-3.5 rounded font-semibold tracking-widest text-xs uppercase bg-brand-dark text-white hover:bg-brand-accent transition-all duration-300 flex justify-center reveal-left delay-300" data-cms="about_sidebar_cta">Work With Me</a>
 
               </div>
             </div>
@@ -173,9 +199,7 @@
             <div class="flex-1 max-w-3xl">
 
               <div class="prose-custom reveal">
-                <p class="text-lg text-slate-600 leading-relaxed mb-6">
-                  I've lived, worked, and studied as an expat in more than half a dozen countries, including Greece, Spain, the U.K., Afghanistan, and several nations across the Middle East. Having moved over 23 times in my adult life, I've become intimately familiar with reinvention, resilience, and the art of transition.
-                </p>
+                <p class="text-lg text-slate-600 leading-relaxed mb-6" data-cms="about_intro">I've lived, worked, and studied as an expat in more than half a dozen countries, including Greece, Spain, the U.K., Afghanistan, and several nations across the Middle East. Having moved over 23 times in my adult life, I've become intimately familiar with reinvention, resilience, and the art of transition.</p>
               </div>
 
               <!-- Video -->
@@ -187,88 +211,87 @@
               </div>
 
               <div class="reveal">
-                <p class="text-slate-600 leading-relaxed mb-6">
-                  But my story didn't begin as a global nomad. I was born in the U.S. to two loving, hard-of-hearing parents, growing up at the intersection of the deaf and hearing worlds. Early on, I learned to embrace difference, listen for what isn't said, and navigate communication barriers with patience and curiosity — skills that would later become central to my work as a coach.
-                </p>
+                <p class="text-slate-600 leading-relaxed mb-6" data-cms="about_story">But my story didn't begin as a global nomad. I was born in the U.S. to two loving, hard-of-hearing parents, growing up at the intersection of the deaf and hearing worlds. Early on, I learned to embrace difference, listen for what isn't said, and navigate communication barriers with patience and curiosity — skills that would later become central to my work as a coach.</p>
               </div>
 
               <!-- Timeline -->
               <div class="my-12 reveal">
                 <h3 class="font-serif text-2xl text-brand-dark mb-8 flex items-center gap-3">
                   <span class="w-8 h-px bg-brand-accent/40 inline-block"></span>
-                  From Engineering to Coaching
+                  <span data-cms="about_timeline_heading">From Engineering to Coaching</span>
                 </h3>
-                <div class="space-y-8">
-                  <div class="timeline-item">
-                    <div class="text-xs font-bold uppercase tracking-widest text-brand-accent mb-1">Northwestern University</div>
-                    <p class="text-slate-700 font-medium mb-1">B.S. Mechanical Engineering</p>
-                    <p class="text-sm text-slate-500 leading-relaxed">Designed rocket engines for Boeing, worked on the GPS system, earned a private pilot's license.</p>
-                  </div>
-                  <div class="timeline-item">
-                    <div class="text-xs font-bold uppercase tracking-widest text-brand-accent mb-1">Architecture &amp; Construction</div>
-                    <p class="text-slate-700 font-medium mb-1">Project Manager</p>
-                    <p class="text-sm text-slate-500 leading-relaxed">Transitioned from aerospace to managing complex architectural projects.</p>
-                  </div>
-                  <div class="timeline-item">
-                    <div class="text-xs font-bold uppercase tracking-widest text-brand-accent mb-1">U.S. Federal Government</div>
-                    <p class="text-slate-700 font-medium mb-1">Political &amp; Economic Analyst</p>
-                    <p class="text-sm text-slate-500 leading-relaxed">Served across the Middle East and beyond, developing deep cross-cultural expertise.</p>
-                  </div>
-                  <div class="timeline-item">
-                    <div class="text-xs font-bold uppercase tracking-widest text-brand-accent mb-1">Today</div>
-                    <p class="text-slate-700 font-medium mb-1">Global Leadership &amp; Executive Coach</p>
-                    <p class="text-sm text-slate-500 leading-relaxed">4,000+ hours coaching professionals from Fortune 500 companies across pharma, tech, finance, healthcare, and beyond.</p>
-                  </div>
-                </div>
+                <div class="space-y-8" data-cms-list="about_timeline" data-cms-label="Career Timeline" data-cms-types="desc:textarea" data-cms-min="1" data-cms-max="8">
+                  <template data-cms-template>
+                    <div class="timeline-item">
+                      <div class="text-xs font-bold uppercase tracking-widest text-brand-accent mb-1">{{org}}</div>
+                      <p class="text-slate-700 font-medium mb-1">{{role}}</p>
+                      <p class="text-sm text-slate-500 leading-relaxed">{{desc}}</p>
+                    </div>
+                  </template>
+
+                    <div data-cms-item="0" class="timeline-item">
+                      <div class="text-xs font-bold uppercase tracking-widest text-brand-accent mb-1">Northwestern University</div>
+                      <p class="text-slate-700 font-medium mb-1">B.S. Mechanical Engineering</p>
+                      <p class="text-sm text-slate-500 leading-relaxed">Designed rocket engines for Boeing, worked on the GPS system, earned a private pilot's license.</p>
+                    </div>
+                  
+
+                    <div data-cms-item="1" class="timeline-item">
+                      <div class="text-xs font-bold uppercase tracking-widest text-brand-accent mb-1">Architecture &amp; Construction</div>
+                      <p class="text-slate-700 font-medium mb-1">Project Manager</p>
+                      <p class="text-sm text-slate-500 leading-relaxed">Transitioned from aerospace to managing complex architectural projects.</p>
+                    </div>
+                  
+
+                    <div data-cms-item="2" class="timeline-item">
+                      <div class="text-xs font-bold uppercase tracking-widest text-brand-accent mb-1">U.S. Federal Government</div>
+                      <p class="text-slate-700 font-medium mb-1">Political &amp; Economic Analyst</p>
+                      <p class="text-sm text-slate-500 leading-relaxed">Served across the Middle East and beyond, developing deep cross-cultural expertise.</p>
+                    </div>
+                  
+
+                    <div data-cms-item="3" class="timeline-item">
+                      <div class="text-xs font-bold uppercase tracking-widest text-brand-accent mb-1">Today</div>
+                      <p class="text-slate-700 font-medium mb-1">Global Leadership &amp; Executive Coach</p>
+                      <p class="text-sm text-slate-500 leading-relaxed">4,000+ hours coaching professionals from Fortune 500 companies across pharma, tech, finance, healthcare, and beyond.</p>
+                    </div>
+                  
+</div>
               </div>
 
               <div class="reveal">
                 <h3 class="font-serif text-2xl text-brand-dark mb-5 flex items-center gap-3">
                   <span class="w-8 h-px bg-brand-accent/40 inline-block"></span>
-                  Global Leadership &amp; Executive Coach
+                  <span data-cms="about_today_heading">Global Leadership &amp; Executive Coach</span>
                 </h3>
-                <p class="text-slate-600 leading-relaxed mb-4">
-                  Today, I partner with more than <strong class="text-brand-dark">400 professionals worldwide</strong> — individual contributors, first-time managers, directors, VPs, and senior leaders across six global regions. My work spans Fortune 500 companies in pharmaceuticals, software, healthcare, biotech, tech, manufacturing, financial services, and food processing.
-                </p>
-                <p class="text-slate-600 leading-relaxed mb-8">
-                  I've also partnered closely with expats and expat spouses, helping them build meaningful, grounded, fulfilling lives abroad.
-                </p>
+                <p class="text-slate-600 leading-relaxed mb-4" data-cms-html="about_today_p1">Today, I partner with more than <strong class="text-brand-dark">400 professionals worldwide</strong> — individual contributors, first-time managers, directors, VPs, and senior leaders across six global regions. My work spans Fortune 500 companies in pharmaceuticals, software, healthcare, biotech, tech, manufacturing, financial services, and food processing.</p>
+                <p class="text-slate-600 leading-relaxed mb-8" data-cms="about_today_p2">I've also partnered closely with expats and expat spouses, helping them build meaningful, grounded, fulfilling lives abroad.</p>
               </div>
 
               <!-- Pull quote -->
               <div class="my-10 reveal">
                 <div class="pull-quote">
-                  <p class="font-serif text-xl text-slate-700 italic leading-relaxed">
-                    "Thriving isn't about blending in perfectly; it's about creating a new version of your life that honours where you came from."
-                  </p>
+                  <p class="font-serif text-xl text-slate-700 italic leading-relaxed" data-cms="about_pull_quote">&quot;Thriving isn't about blending in perfectly; it's about creating a new version of your life that honours where you came from.&quot;</p>
                 </div>
               </div>
 
               <div class="reveal">
                 <h3 class="font-serif text-2xl text-brand-dark mb-5 flex items-center gap-3">
                   <span class="w-8 h-px bg-brand-accent/40 inline-block"></span>
-                  My Coaching Philosophy
+                  <span data-cms="about_philosophy_heading">My Coaching Philosophy</span>
                 </h3>
-                <p class="text-slate-600 leading-relaxed mb-4">
-                  Whether you're navigating a major transition or stepping into a new chapter of leadership, I'll help you tap into your strengths, clarify what truly matters, and partner with you as you take bold, achievable steps toward lasting growth.
-                </p>
-                <p class="text-slate-600 leading-relaxed mb-4">
-                  My work centres on helping you lead yourself — and others — with authenticity, resilience, and purpose. When you align your values and vision with intentional action, you don't just navigate change, you shape it.
-                </p>
-                <p class="text-slate-700 font-medium leading-relaxed">
-                  At the heart of my coaching is a simple belief: <span class="text-brand-dark"><strong>Meaningful growth comes from change, and you have limitless potential to create the future you want.</strong></span>
-                </p>
+                <p class="text-slate-600 leading-relaxed mb-4" data-cms="about_philosophy_p1">Whether you're navigating a major transition or stepping into a new chapter of leadership, I'll help you tap into your strengths, clarify what truly matters, and partner with you as you take bold, achievable steps toward lasting growth.</p>
+                <p class="text-slate-600 leading-relaxed mb-4" data-cms="about_philosophy_p2">My work centres on helping you lead yourself — and others — with authenticity, resilience, and purpose. When you align your values and vision with intentional action, you don't just navigate change, you shape it.</p>
+                <p class="text-slate-700 font-medium leading-relaxed" data-cms-html="about_philosophy_p3">At the heart of my coaching is a simple belief: <span class="text-brand-dark"><strong>Meaningful growth comes from change, and you have limitless potential to create the future you want.</strong></span></p>
               </div>
 
               <!-- CTA -->
               <div class="mt-12 p-8 bg-brand-warm rounded-2xl border border-slate-100 flex flex-col sm:flex-row items-center gap-6 reveal">
                 <div class="flex-1">
-                  <h4 class="font-serif text-xl text-brand-dark mb-1">Ready to work together?</h4>
-                  <p class="text-sm text-slate-500">Start with a free 45-minute discovery session.</p>
+                  <h4 class="font-serif text-xl text-brand-dark mb-1" data-cms="about_cta_heading">Ready to work together?</h4>
+                  <p class="text-sm text-slate-500" data-cms="about_cta_subtext">Start with a free 45-minute discovery session.</p>
                 </div>
-                <a href="/contact/" class="flex-shrink-0 px-7 py-3.5 rounded font-semibold tracking-widest text-xs uppercase bg-brand-dark text-white hover:bg-brand-accent transition-all duration-300 whitespace-nowrap">
-                  Book Discovery Session
-                </a>
+                <a href="/contact/" class="flex-shrink-0 px-7 py-3.5 rounded font-semibold tracking-widest text-xs uppercase bg-brand-dark text-white hover:bg-brand-accent transition-all duration-300 whitespace-nowrap" data-cms="about_cta_button">Book Discovery Session</a>
               </div>
 
             </div>

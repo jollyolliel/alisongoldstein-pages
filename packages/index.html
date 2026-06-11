@@ -137,176 +137,195 @@
       <section class="pt-32 pb-24 bg-white">
         <div class="container mx-auto px-6">
           <!-- Section header -->
-          <div class="mb-16 text-center reveal">
+          <div class="mb-16 text-center reveal" data-cms-section="packages-intro" data-cms-label="Intro">
             <div class="flex items-center justify-center gap-3 mb-4">
               <div class="h-px w-8 bg-brand-accent/40 rounded-full"></div>
               <span
                 class="text-xs font-bold uppercase tracking-widest text-brand-accent"
+                data-cms="packages_eyebrow"
                 >Invest in Yourself</span
               >
               <div class="h-px w-8 bg-brand-accent/40 rounded-full"></div>
             </div>
-            <h1 class="font-serif text-4xl md:text-5xl text-brand-dark mb-4">
-              Packages &amp; Offers
-            </h1>
-            <p class="text-slate-500 max-w-lg mx-auto leading-relaxed">
-              Every journey begins with a conversation. Choose the package that
-              fits where you are right now.
-            </p>
+            <h1 class="font-serif text-4xl md:text-5xl text-brand-dark mb-4" data-cms="packages_heading">Packages &amp; Offers</h1>
+            <p class="text-slate-500 max-w-lg mx-auto leading-relaxed" data-cms="packages_subtext">Every journey begins with a conversation. Choose the package that fits where you are right now.</p>
           </div>
 
           <!-- Packages grid -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto items-stretch">
-
-            <!-- 01 Discovery Session -->
-            <div class="reveal delay-100 flex flex-col h-full">
-              <div class="flex flex-col h-full rounded-2xl overflow-hidden border transition-all duration-300 border-slate-100 shadow-md hover:shadow-xl hover:-translate-y-1">
-                <div class="h-1 bg-slate-100"></div>
-                <div class="bg-white p-8 flex flex-col flex-grow">
-                  <div class="flex items-start justify-between mb-6">
-                    <div>
-                      <div class="text-xs font-bold uppercase tracking-widest text-brand-accent/60 mb-1">01</div>
-                      <h2 class="font-serif text-2xl text-brand-dark">Discovery Session</h2>
-                      <div class="text-slate-400 text-xs mt-1">1 Session · 45 min</div>
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto items-stretch cms-stagger"
+            data-cms-list="packages"
+            data-cms-label="Packages"
+            data-cms-types="desc:textarea"
+            data-cms-min="1"
+            data-cms-max="4"
+            data-cms-count-class="md:grid-cols-*"
+          >
+            <template data-cms-template>
+              <div class="reveal flex flex-col h-full">
+                <div class="flex flex-col h-full rounded-2xl overflow-hidden border transition-all duration-300 {{#featured}}border-brand-accent/40 shadow-2xl md:-mt-4 md:mb-4 relative z-10{{/featured}}{{^featured}}border-slate-100 shadow-md hover:shadow-xl hover:-translate-y-1{{/featured}}">
+                  {{#featured}}<div class="bg-brand-accent px-4 py-3 text-center text-xs font-bold uppercase tracking-widest text-white">{{banner}}</div>{{/featured}}{{^featured}}<div class="h-1 bg-slate-100"></div>{{/featured}}
+                  <div class="bg-white p-8 flex flex-col flex-grow">
+                    <div class="flex items-start justify-between mb-6">
+                      <div>
+                        <div class="text-xs font-bold uppercase tracking-widest text-brand-accent/60 mb-1">{{@nn}}</div>
+                        <h2 class="font-serif text-2xl text-brand-dark">{{title}}</h2>
+                        <div class="text-slate-400 text-xs mt-1">{{sessions}}</div>
+                      </div>
                     </div>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">{{desc}}</p>
+                    <div class="mb-6">
+                      <div class="font-serif text-4xl font-bold text-brand-dark">{{price}}</div>
+                      <div class="text-xs text-slate-400 uppercase tracking-wider mt-0.5">{{price_label}}</div>
+                    </div>
+                    <div class="h-px bg-slate-100 mb-6"></div>
+                    <ul class="space-y-3 mb-8 flex-grow">{{#features}}<li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 flex-shrink-0 mt-0.5 {{#featured}}text-brand-accent{{/featured}}{{^featured}}text-slate-400{{/featured}}"></i>{{.}}</li>{{/features}}</ul>
+                    {{#button_outline}}<a href="/contact/" class="w-full flex justify-center py-3.5 rounded font-semibold tracking-widest text-xs uppercase transition-all duration-300 border-2 border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white">{{button}}</a>{{/button_outline}}{{^button_outline}}<a href="/contact/" class="w-full flex justify-center py-3.5 rounded font-semibold tracking-widest text-xs uppercase transition-all duration-300 bg-brand-dark text-white hover:bg-brand-accent">{{button}}</a>{{/button_outline}}
                   </div>
-                  <p class="text-slate-500 text-sm leading-relaxed mb-6">A complimentary 45-minute call to explore your needs, clarify your goals, and determine whether coaching is the right fit.</p>
-                  <div class="mb-6">
-                    <div class="font-serif text-4xl font-bold text-brand-dark">Free</div>
-                    <div class="text-xs text-slate-400 uppercase tracking-wider mt-0.5">Complimentary</div>
-                  </div>
-                  <div class="h-px bg-slate-100 mb-6"></div>
-                  <ul class="space-y-3 mb-8 flex-grow">
-                    <li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 flex-shrink-0 mt-0.5 text-slate-400"></i>Explore your coaching goals</li>
-                    <li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 flex-shrink-0 mt-0.5 text-slate-400"></i>Experience coaching first-hand</li>
-                    <li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 flex-shrink-0 mt-0.5 text-slate-400"></i>Q&amp;A — no obligation</li>
-                  </ul>
-                  <a href="/contact/" class="w-full flex justify-center py-3.5 rounded font-semibold tracking-widest text-xs uppercase transition-all duration-300 bg-brand-dark text-white hover:bg-brand-accent">Book Free Session</a>
                 </div>
               </div>
-            </div>
+            </template>
 
-            <!-- 02 Transformation -->
-            <div class="reveal delay-200 flex flex-col h-full">
-              <div class="flex flex-col h-full rounded-2xl overflow-hidden border transition-all duration-300 border-brand-accent/40 shadow-2xl md:-mt-4 md:mb-4 relative z-10">
-                <div class="bg-brand-accent px-4 py-3 text-center text-xs font-bold uppercase tracking-widest text-white">Recommended for deep results</div>
-                <div class="bg-white p-8 flex flex-col flex-grow">
-                  <div class="flex items-start justify-between mb-6">
-                    <div>
-                      <div class="text-xs font-bold uppercase tracking-widest text-brand-accent/60 mb-1">02</div>
-                      <h2 class="font-serif text-2xl text-brand-dark">Transformation</h2>
-                      <div class="text-slate-400 text-xs mt-1">12 Sessions · 45 min each</div>
+              <div data-cms-item="0" class="reveal flex flex-col h-full">
+                <div class="flex flex-col h-full rounded-2xl overflow-hidden border transition-all duration-300 border-slate-100 shadow-md hover:shadow-xl hover:-translate-y-1">
+                  <div class="h-1 bg-slate-100"></div>
+                  <div class="bg-white p-8 flex flex-col flex-grow">
+                    <div class="flex items-start justify-between mb-6">
+                      <div>
+                        <div class="text-xs font-bold uppercase tracking-widest text-brand-accent/60 mb-1">01</div>
+                        <h2 class="font-serif text-2xl text-brand-dark">Discovery Session</h2>
+                        <div class="text-slate-400 text-xs mt-1">1 Session · 45 min</div>
+                      </div>
                     </div>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">A complimentary 45-minute call to explore your needs, clarify your goals, and determine whether coaching is the right fit.</p>
+                    <div class="mb-6">
+                      <div class="font-serif text-4xl font-bold text-brand-dark">Free</div>
+                      <div class="text-xs text-slate-400 uppercase tracking-wider mt-0.5">Complimentary</div>
+                    </div>
+                    <div class="h-px bg-slate-100 mb-6"></div>
+                    <ul class="space-y-3 mb-8 flex-grow"><li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 flex-shrink-0 mt-0.5 text-slate-400"></i>Explore your coaching goals</li><li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 flex-shrink-0 mt-0.5 text-slate-400"></i>Experience coaching first-hand</li><li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 flex-shrink-0 mt-0.5 text-slate-400"></i>Q&amp;A — no obligation</li></ul>
+                    <a href="/contact/" class="w-full flex justify-center py-3.5 rounded font-semibold tracking-widest text-xs uppercase transition-all duration-300 bg-brand-dark text-white hover:bg-brand-accent">Book Free Session</a>
                   </div>
-                  <p class="text-slate-500 text-sm leading-relaxed mb-6">Ideal for long-term transformation across multiple areas of life. Provides the structure and continuity needed for meaningful, sustained change.</p>
-                  <div class="mb-6">
-                    <div class="font-serif text-4xl font-bold text-brand-dark">$1,500</div>
-                    <div class="text-xs text-slate-400 uppercase tracking-wider mt-0.5">Investment</div>
-                  </div>
-                  <div class="h-px bg-slate-100 mb-6"></div>
-                  <ul class="space-y-3 mb-8 flex-grow">
-                    <li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 flex-shrink-0 mt-0.5 text-brand-accent"></i>Deep-dive transformation</li>
-                    <li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 flex-shrink-0 mt-0.5 text-brand-accent"></i>Personalized Resources</li>
-                  </ul>
-                  <a href="/contact/" class="w-full flex justify-center py-3.5 rounded font-semibold tracking-widest text-xs uppercase transition-all duration-300 bg-brand-dark text-white hover:bg-brand-accent">Get Started</a>
                 </div>
               </div>
-            </div>
+            
 
-            <!-- 03 Coaching Bank -->
-            <div class="reveal delay-300 flex flex-col h-full">
-              <div class="flex flex-col h-full rounded-2xl overflow-hidden border transition-all duration-300 border-slate-100 shadow-md hover:shadow-xl hover:-translate-y-1">
-                <div class="h-1 bg-slate-100"></div>
-                <div class="bg-white p-8 flex flex-col flex-grow">
-                  <div class="flex items-start justify-between mb-6">
-                    <div>
-                      <div class="text-xs font-bold uppercase tracking-widest text-brand-accent/60 mb-1">03</div>
-                      <h2 class="font-serif text-2xl text-brand-dark">Coaching Bank</h2>
-                      <div class="text-slate-400 text-xs mt-1">4 Sessions · 45 min each</div>
+              <div data-cms-item="1" class="reveal flex flex-col h-full">
+                <div class="flex flex-col h-full rounded-2xl overflow-hidden border transition-all duration-300 border-brand-accent/40 shadow-2xl md:-mt-4 md:mb-4 relative z-10">
+                  <div class="bg-brand-accent px-4 py-3 text-center text-xs font-bold uppercase tracking-widest text-white">Recommended for deep results</div>
+                  <div class="bg-white p-8 flex flex-col flex-grow">
+                    <div class="flex items-start justify-between mb-6">
+                      <div>
+                        <div class="text-xs font-bold uppercase tracking-widest text-brand-accent/60 mb-1">02</div>
+                        <h2 class="font-serif text-2xl text-brand-dark">Transformation</h2>
+                        <div class="text-slate-400 text-xs mt-1">12 Sessions · 45 min each</div>
+                      </div>
                     </div>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">Ideal for long-term transformation across multiple areas of life. Provides the structure and continuity needed for meaningful, sustained change.</p>
+                    <div class="mb-6">
+                      <div class="font-serif text-4xl font-bold text-brand-dark">$1,500</div>
+                      <div class="text-xs text-slate-400 uppercase tracking-wider mt-0.5">Investment</div>
+                    </div>
+                    <div class="h-px bg-slate-100 mb-6"></div>
+                    <ul class="space-y-3 mb-8 flex-grow"><li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 flex-shrink-0 mt-0.5 text-brand-accent"></i>Deep-dive transformation</li><li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 flex-shrink-0 mt-0.5 text-brand-accent"></i>Personalized Resources</li></ul>
+                    <a href="/contact/" class="w-full flex justify-center py-3.5 rounded font-semibold tracking-widest text-xs uppercase transition-all duration-300 bg-brand-dark text-white hover:bg-brand-accent">Get Started</a>
                   </div>
-                  <p class="text-slate-500 text-sm leading-relaxed mb-6">Best for clients who've completed the 12-session program and want to address one specific challenge or maintain their momentum.</p>
-                  <div class="mb-6">
-                    <div class="font-serif text-4xl font-bold text-brand-dark">$600</div>
-                    <div class="text-xs text-slate-400 uppercase tracking-wider mt-0.5">Investment</div>
-                  </div>
-                  <div class="h-px bg-slate-100 mb-6"></div>
-                  <ul class="space-y-3 mb-8 flex-grow">
-                    <li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 flex-shrink-0 mt-0.5 text-slate-400"></i>Targeted single-issue focus</li>
-                    <li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 flex-shrink-0 mt-0.5 text-slate-400"></i>Flexible scheduling</li>
-                    <li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 flex-shrink-0 mt-0.5 text-slate-400"></i>Great for maintenance</li>
-                  </ul>
-                  <a href="/contact/" class="w-full flex justify-center py-3.5 rounded font-semibold tracking-widest text-xs uppercase transition-all duration-300 border-2 border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white">Get Started</a>
                 </div>
               </div>
-            </div>
+            
 
-          </div>
+              <div data-cms-item="2" class="reveal flex flex-col h-full">
+                <div class="flex flex-col h-full rounded-2xl overflow-hidden border transition-all duration-300 border-slate-100 shadow-md hover:shadow-xl hover:-translate-y-1">
+                  <div class="h-1 bg-slate-100"></div>
+                  <div class="bg-white p-8 flex flex-col flex-grow">
+                    <div class="flex items-start justify-between mb-6">
+                      <div>
+                        <div class="text-xs font-bold uppercase tracking-widest text-brand-accent/60 mb-1">03</div>
+                        <h2 class="font-serif text-2xl text-brand-dark">Coaching Bank</h2>
+                        <div class="text-slate-400 text-xs mt-1">4 Sessions · 45 min each</div>
+                      </div>
+                    </div>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">Best for clients who've completed the 12-session program and want to address one specific challenge or maintain their momentum.</p>
+                    <div class="mb-6">
+                      <div class="font-serif text-4xl font-bold text-brand-dark">$600</div>
+                      <div class="text-xs text-slate-400 uppercase tracking-wider mt-0.5">Investment</div>
+                    </div>
+                    <div class="h-px bg-slate-100 mb-6"></div>
+                    <ul class="space-y-3 mb-8 flex-grow"><li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 flex-shrink-0 mt-0.5 text-slate-400"></i>Targeted single-issue focus</li><li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 flex-shrink-0 mt-0.5 text-slate-400"></i>Flexible scheduling</li><li class="flex items-start gap-3 text-sm text-slate-600"><i data-lucide="check" class="w-4 h-4 flex-shrink-0 mt-0.5 text-slate-400"></i>Great for maintenance</li></ul>
+                    <a href="/contact/" class="w-full flex justify-center py-3.5 rounded font-semibold tracking-widest text-xs uppercase transition-all duration-300 border-2 border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white">Get Started</a>
+                  </div>
+                </div>
+              </div>
+            
+</div>
 
           <!-- What to expect -->
-          <div class="mt-20 max-w-3xl mx-auto reveal">
+          <div class="mt-20 max-w-3xl mx-auto reveal" data-cms-section="packages-expect" data-cms-label="What to Expect">
             <div class="bg-brand-warm rounded-2xl p-8 border border-slate-100">
               <div class="flex items-center gap-3 mb-6">
                 <i
                   data-lucide="info"
                   class="w-5 h-5 text-brand-accent flex-shrink-0"
                 ></i>
-                <h3 class="font-serif text-xl text-brand-dark">
-                  What to expect
-                </h3>
+                <h3 class="font-serif text-xl text-brand-dark" data-cms="expect_heading">What to expect</h3>
               </div>
-              <div class="grid sm:grid-cols-3 gap-6 text-sm text-slate-600">
-                <div class="flex gap-3">
-                  <div
-                    class="w-1.5 h-1.5 rounded-full bg-brand-accent mt-1.5 flex-shrink-0"
-                  ></div>
-                  <p>
-                    All sessions are
-                    <strong class="text-brand-dark">45 minutes</strong> via
-                    video or phone, at a time that suits your schedule.
-                  </p>
-                </div>
-                <div class="flex gap-3">
-                  <div
-                    class="w-1.5 h-1.5 rounded-full bg-brand-accent mt-1.5 flex-shrink-0"
-                  ></div>
-                  <p>
-                    Each session includes
-                    <strong class="text-brand-dark">resources</strong> tailored
-                    to your goals.
-                  </p>
-                </div>
-                <div class="flex gap-3">
-                  <div
-                    class="w-1.5 h-1.5 rounded-full bg-brand-accent mt-1.5 flex-shrink-0"
-                  ></div>
-                  <p>
-                    Sessions are
-                    <strong class="text-brand-dark">fully confidential</strong>
-                    — a safe space to explore freely.
-                  </p>
-                </div>
-              </div>
+              <div
+                class="grid sm:grid-cols-3 gap-6 text-sm text-slate-600"
+                data-cms-list="expect_points"
+                data-cms-label="Expect Points"
+                data-cms-min="1"
+                data-cms-max="6"
+                data-cms-count-class="sm:grid-cols-*"
+              >
+                <template data-cms-template>
+                  <div class="flex gap-3">
+                    <div
+                      class="w-1.5 h-1.5 rounded-full bg-brand-accent mt-1.5 flex-shrink-0"
+                    ></div>
+                    <p>{{{text}}}</p>
+                  </div>
+                </template>
+
+                  <div data-cms-item="0" class="flex gap-3">
+                    <div
+                      class="w-1.5 h-1.5 rounded-full bg-brand-accent mt-1.5 flex-shrink-0"
+                    ></div>
+                    <p>All sessions are <strong class="text-brand-dark">45 minutes</strong> via video or phone, at a time that suits your schedule.</p>
+                  </div>
+                
+
+                  <div data-cms-item="1" class="flex gap-3">
+                    <div
+                      class="w-1.5 h-1.5 rounded-full bg-brand-accent mt-1.5 flex-shrink-0"
+                    ></div>
+                    <p>Each session includes <strong class="text-brand-dark">resources</strong> tailored to your goals.</p>
+                  </div>
+                
+
+                  <div data-cms-item="2" class="flex gap-3">
+                    <div
+                      class="w-1.5 h-1.5 rounded-full bg-brand-accent mt-1.5 flex-shrink-0"
+                    ></div>
+                    <p>Sessions are <strong class="text-brand-dark">fully confidential</strong> — a safe space to explore freely.</p>
+                  </div>
+                
+</div>
             </div>
           </div>
 
           <!-- Business CTA -->
           <div
             class="mt-12 bg-brand-dark rounded-2xl p-10 md:p-12 text-center max-w-4xl mx-auto relative overflow-hidden grain reveal"
+            data-cms-section="packages-team"
+            data-cms-label="Business CTA"
           >
-            <h3 class="font-serif text-3xl text-white mb-3">
-              Coaching for your team?
-            </h3>
-            <p class="text-slate-400 mb-8 max-w-xl mx-auto leading-relaxed">
-              I partner with organizations to provide leadership development,
-              resilience training, and 360° assessments for employees at every
-              level.
-            </p>
+            <h3 class="font-serif text-3xl text-white mb-3" data-cms="packages_team_heading">Coaching for your team?</h3>
+            <p class="text-slate-400 mb-8 max-w-xl mx-auto leading-relaxed" data-cms="packages_team_body">I partner with organizations to provide leadership development, resilience training, and 360° assessments for employees at every level.</p>
             <a
               href="/business/"
               class="inline-flex items-center gap-2 px-7 py-3.5 rounded font-semibold tracking-widest text-xs uppercase bg-white text-brand-dark hover:bg-brand-accent hover:text-white transition-all duration-300"
             >
-              View Business Services
+              <span data-cms="packages_team_button">View Business Services</span>
               <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </a>
           </div>

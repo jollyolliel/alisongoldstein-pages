@@ -18,6 +18,19 @@ const path = require("path");
 
 const ROOT = __dirname;
 
+/* CMS: footer values come from content.json so every page stays in sync,
+   but the data-cms annotations are kept only on index.html — the footer
+   is edited once, from the Home tab. */
+const { stampPage } = require("./build/stamp.js");
+const CONTENT_FILE = path.join(ROOT, "content.json");
+const CMS_CONTENT = fs.existsSync(CONTENT_FILE)
+  ? JSON.parse(fs.readFileSync(CONTENT_FILE, "utf8"))
+  : null;
+
+function stripCmsAttrs(html) {
+  return html.replace(/\s+data-cms(?:-[\w-]+)?="[^"]*"/g, "");
+}
+
 const NAV = [
   { val: "home",     label: "Home",     href: "/" },
   { val: "packages", label: "Packages", href: "/packages/" },
@@ -138,7 +151,9 @@ PAGES.forEach(function(page) {
   const original = html;
 
   const header = buildHeader(headerSnippet, page.active, page.transparent);
-  const footer = buildFooter(footerSnippet);
+  let footer = buildFooter(footerSnippet);
+  if (CMS_CONTENT) footer = stampPage(footer, CMS_CONTENT);
+  if (page.file !== "index.html") footer = stripCmsAttrs(footer);
 
   html = replaceBlock(html, '<header id="main-header"', "</header>", header);
   html = replaceBlock(html, '<footer id="main-footer"', "</footer>", footer);
