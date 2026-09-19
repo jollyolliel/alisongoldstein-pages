@@ -13,16 +13,35 @@
 }
 
 /* ─── Scroll progress bar ─── */
+/* Full-width bar scaled on the X axis. transform is compositor-only, so this
+   stays smooth whether driven by CSS scroll timelines or the JS fallback. */
 #scroll-progress {
   position: fixed;
   top: 0;
   left: 0;
   height: 2px;
+  width: 100%;
   background: linear-gradient(90deg, #d97706, #ca8a04);
   z-index: 9999;
-  width: 0%;
-  transition: width 0.08s linear;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
   pointer-events: none;
+}
+
+/* Modern path: drive the bar straight off the document scroll timeline — no
+   scroll listener, no JS per frame. Gated so only browsers with real support
+   (Chrome/Edge 115+, Safari 26+) opt in; others fall back to js/site.js. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    @keyframes grow-progress {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+    #scroll-progress {
+      animation: grow-progress auto linear;
+      animation-timeline: scroll();
+    }
+  }
 }
 
 /* ─── Scroll reveal ─── */
@@ -67,17 +86,20 @@
 .cms-stagger > :nth-child(6) { transition-delay: 0.50s; }
 .cms-stagger > :nth-child(7) { transition-delay: 0.60s; }
 
-/* Reset scroll-reveal delay on hover so transform animates immediately */
-.reveal:hover,
-.reveal-left:hover,
-.reveal-right:hover {
-  transition-delay: 0s !important;
-  transition-duration: 0.3s !important;
+/* Areas of Focus cards: hover lift via the `translate` property so it never
+   fights the `.reveal` entrance `transform`. Both directions share the same
+   short, delay-free transition, so the card settles back smoothly on mouse-out
+   instead of stalling then snapping. */
+#quick-services-grid > [data-cms-item] {
+  transition:
+    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    translate 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
-
-/* Areas of Focus card hover lift — uses transform (not translate) to stay in transition scope */
-#quick-services-grid .reveal.visible:hover {
-  transform: translateY(-0.5rem);
+#quick-services-grid > [data-cms-item]:hover {
+  translate: 0 -0.5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -159,20 +181,10 @@
 }
 
 /* ─── Testimonial card ─── */
+/* The card's opening quote mark is the inline <span>&ldquo;</span> in the
+   markup; no ::before pseudo-element, or the glyph renders twice. */
 .testimonial-card {
   position: relative;
-}
-.testimonial-card::before {
-  content: '\201C';
-  font-family: 'Playfair Display', serif;
-  font-size: 4rem;
-  line-height: 1;
-  color: #d97706;
-  opacity: 0.25;
-  position: absolute;
-  top: 1rem;
-  left: 1.75rem;
-  pointer-events: none;
 }
 
 /* ─── Hover underline link ─── */

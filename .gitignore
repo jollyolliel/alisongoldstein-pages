@@ -7,3 +7,4 @@ deployable/
 package-lock.json
 cms.credentials.json
 **/cms.credentials.json
+.claude/

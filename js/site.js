@@ -113,13 +113,18 @@
   };
 
   /* ─── Scroll progress bar ─── */
+  /* Fallback only. Browsers that support CSS scroll-driven animations run the
+     bar natively (see #scroll-progress in input.css); we bail out here so they
+     never pay for a scroll listener. */
   window.initScrollProgress = function () {
     var bar = document.getElementById("scroll-progress");
     if (!bar) return;
+    if (window.CSS && CSS.supports && CSS.supports("animation-timeline", "scroll()")) return;
     window.addEventListener("scroll", function () {
       var scrollTop  = window.scrollY;
       var docHeight  = document.documentElement.scrollHeight - window.innerHeight;
-      bar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + "%";
+      var progress   = docHeight > 0 ? scrollTop / docHeight : 0;
+      bar.style.transform = "scaleX(" + progress + ")";
     }, { passive: true });
   };
 

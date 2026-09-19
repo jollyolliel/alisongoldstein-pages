@@ -134,13 +134,13 @@
   <body
     class="bg-brand-warm text-brand-primary antialiased selection:bg-brand-accent selection:text-white flex flex-col min-h-screen"
   >
-    <div id="scroll-progress"></div>
+    <div id="scroll-progress" aria-hidden="true"></div>
 
     <!-- ─── HEADER ─── -->
     <header id="main-header" class="fixed w-full z-50 transition-all duration-500 py-6 bg-transparent">
   <div class="container mx-auto px-6 flex justify-between items-center">
-    <a href="/" class="font-serif text-2xl font-bold tracking-tight cursor-pointer z-50 text-brand-dark">Alison Goldstein</a>
-    <nav class="hidden md:flex items-center gap-8">
+    <a href="/" class="font-serif text-2xl font-bold tracking-tight cursor-pointer z-50 text-brand-dark whitespace-nowrap shrink-0">Alison Goldstein</a>
+    <nav class="hidden lg:flex items-center gap-8">
       <div id="desktop-nav-links" class="flex gap-8">
         <a href="/" class="nav-link-btn text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:text-brand-accent relative group cursor-pointer text-brand-accent">Home<span class="absolute -bottom-2 left-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full w-full"></span></a>
         <a href="/about/" class="nav-link-btn text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:text-brand-accent relative group cursor-pointer text-slate-600">About<span class="absolute -bottom-2 left-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full w-0"></span></a>
@@ -151,11 +151,11 @@
       </div>
       <a href="/contact/" class="ml-4 px-6 py-2.5 rounded font-semibold tracking-widest text-xs uppercase bg-brand-dark text-white hover:bg-brand-accent transition-all duration-300">Contact</a>
     </nav>
-    <button class="md:hidden p-2 z-50 cursor-pointer" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+    <button class="lg:hidden p-2 z-50 cursor-pointer" onclick="toggleMobileMenu()" aria-label="Toggle menu">
       <i data-lucide="menu" id="menu-icon" class="text-brand-dark w-6 h-6"></i>
     </button>
   </div>
-  <div id="mobile-menu" class="fixed inset-0 bg-white z-40 transform transition-transform duration-500 ease-in-out translate-x-full md:hidden flex flex-col items-center justify-center gap-1">
+  <div id="mobile-menu" class="fixed inset-0 bg-white z-40 transform transition-transform duration-500 ease-in-out translate-x-full lg:hidden flex flex-col items-center justify-center gap-1">
     <div id="mobile-nav-links" class="flex flex-col gap-7 text-center mb-10">
       <a href="/" class="text-2xl font-serif cursor-pointer text-brand-accent">Home</a>
       <a href="/about/" class="text-2xl font-serif cursor-pointer text-brand-dark hover:text-brand-accent">About</a>
@@ -372,7 +372,7 @@
           </div>
 
           <div
-            class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto cms-stagger"
+            class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto"
             id="quick-services-grid"
             data-cms-list="services"
             data-cms-label="Service Cards"
@@ -382,7 +382,7 @@
           >
             <template data-cms-template>
               <div
-                class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal"
+                class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:shadow-2xl overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal"
               >
                 <div class="service-ghost-num">{{@nn}}</div>
                 <i
@@ -405,7 +405,7 @@
               </div>
             </template>
 
-              <div data-cms-item="0"                 class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal"
+              <div data-cms-item="0"                 class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:shadow-2xl overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal"
               >
                 <div class="service-ghost-num">01</div>
                 <i
@@ -428,7 +428,7 @@
               </div>
             
 
-              <div data-cms-item="1"                 class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal"
+              <div data-cms-item="1"                 class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:shadow-2xl overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal"
               >
                 <div class="service-ghost-num">02</div>
                 <i
@@ -451,7 +451,7 @@
               </div>
             
 
-              <div data-cms-item="2"                 class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal"
+              <div data-cms-item="2"                 class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:shadow-2xl overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal"
               >
                 <div class="service-ghost-num">03</div>
                 <i
@@ -1232,11 +1232,14 @@
         var duration = 9000;
         var visible = 3;
         var cooldown = 10000;
+        var EASE = "transform 700ms cubic-bezier(0.4,0,0.2,1)";
 
         if (!total || !track || !dotsCon) return;
 
         container.style.userSelect = "none";
-        var clone = visible;
+        // Clone a full set on each side so multi-slide drags never run past
+        // the buffer into blank space (data-cms-min guarantees total >= visible).
+        var clone = total;
         for (var i = 0; i < clone; i++) {
           track.insertBefore(slides[total - clone + i].cloneNode(true), slides[0]);
         }
@@ -1244,43 +1247,91 @@
           track.appendChild(slides[j].cloneNode(true));
         }
 
-        var totalSlides = total + 2 * clone;
+        // Real slides live at track indices [clone .. clone+total-1].
         var cur = clone;
         var idx = 0;
         var pct = 100 / visible;
-        track.style.transform = "translateX(-" + cur * pct + "%)";
+        var animating = false; // lock: prevents overshooting the clone buffer
+        setTransform(false);
 
+        function setTransform(withTransition) {
+          track.style.transition = withTransition ? EASE : "none";
+          track.style.transform = "translateX(-" + cur * pct + "%)";
+        }
+
+        // Seamless wrap: after a step lands on a clone, snap back with no
+        // transition. Driven by transitionend so timers can never stack.
+        track.addEventListener("transitionend", function (e) {
+          if (e.propertyName !== "transform") return;
+          if (cur >= total + clone) {
+            cur -= total;
+            setTransform(false);
+            void track.offsetWidth; // force reflow so next transition runs
+          } else if (cur < clone) {
+            cur += total;
+            setTransform(false);
+            void track.offsetWidth;
+          }
+          animating = false;
+        });
+
+        function step(dir) {
+          if (animating || !dir) return; // ignore until current move + snap finishes
+          animating = true;
+          cur += dir;
+          idx = (((idx + dir) % total) + total) % total;
+          setTransform(true);
+          updateDots();
+        }
+        function next() {
+          step(1);
+        }
+        function prev() {
+          step(-1);
+        }
+
+        // ── Drag / swipe ──
         var isDrag = false,
           startX = 0,
           curTx = 0,
-          prevTx = 0,
           animID;
 
         function getX(e) {
-          return e.type.includes("mouse") ? e.pageX : e.touches[0].clientX;
+          return e.type.indexOf("mouse") !== -1 ? e.pageX : e.touches[0].clientX;
         }
         function onDragStart(e) {
+          if (animating) return;
           isDrag = true;
           startX = getX(e);
           curTx = 0;
-          prevTx = 0;
-          clearInterval(autoTimer);
+          stopAuto();
           animID = requestAnimationFrame(dragAnim);
         }
+        function slideW() {
+          return track.offsetWidth / visible;
+        }
+        // Furthest a single drag may travel while staying inside the clones.
+        function maxSlides() {
+          return Math.max(1, total - visible + 1);
+        }
         function onDragMove(e) {
-          if (isDrag) curTx = prevTx + getX(e) - startX;
+          if (!isDrag) return;
+          var limit = maxSlides() * slideW();
+          curTx = Math.max(-limit, Math.min(limit, getX(e) - startX));
         }
         function onDragEnd() {
           if (!isDrag) return;
           isDrag = false;
           cancelAnimationFrame(animID);
-          var moved = curTx - prevTx;
-          if (moved < -80) {
-            next();
-          } else if (moved > 80) {
-            prev();
-          } else {
-            update();
+          if (Math.abs(curTx) > 10) {
+            // Always settle forward in the drag direction: round the partial
+            // slide up so the release never snaps back against the drag.
+            var n = Math.ceil(Math.abs(curTx) / slideW());
+            n = Math.min(n, maxSlides());
+            step(curTx < 0 ? n : -n);
+          } else if (curTx !== 0) {
+            animating = true; // animate back to rest; transitionend clears lock
+            setTransform(true);
           }
           resetAuto();
         }
@@ -1290,18 +1341,16 @@
           var base = -(cur * pct);
           var drag = (curTx / track.offsetWidth) * 100;
           track.style.transform = "translateX(" + (base + drag) + "%)";
-          requestAnimationFrame(dragAnim);
+          animID = requestAnimationFrame(dragAnim);
         }
 
         container.addEventListener("mousedown", onDragStart);
-        container.addEventListener("touchstart", onDragStart);
-        container.addEventListener("mousemove", onDragMove);
-        container.addEventListener("touchmove", onDragMove, { passive: true });
-        container.addEventListener("mouseup", onDragEnd);
-        container.addEventListener("touchend", onDragEnd);
-        container.addEventListener("mouseleave", function () {
-          if (isDrag) onDragEnd();
-        });
+        container.addEventListener("touchstart", onDragStart, { passive: true });
+        // move/up on document so dragging outside the container still tracks
+        document.addEventListener("mousemove", onDragMove);
+        document.addEventListener("touchmove", onDragMove, { passive: true });
+        document.addEventListener("mouseup", onDragEnd);
+        document.addEventListener("touchend", onDragEnd);
 
         function makeDots() {
           dotsCon.innerHTML = "";
@@ -1315,11 +1364,12 @@
                   : "bg-white/25 w-2 hover:bg-white/50");
               d.setAttribute("aria-label", "Go to testimonial " + (i + 1));
               d.onclick = function () {
+                if (animating || i === idx) return;
+                animating = true;
                 cur = i + clone;
                 idx = i;
-                prevTx = 0;
-                curTx = 0;
-                update();
+                setTransform(true);
+                updateDots();
                 resetAuto();
               };
               dotsCon.appendChild(d);
@@ -1327,11 +1377,7 @@
           }
         }
 
-        function update() {
-          track.style.transition = "transform 700ms cubic-bezier(0.4,0,0.2,1)";
-          track.style.transform = "translateX(-" + cur * pct + "%)";
-          prevTx = 0;
-          curTx = 0;
+        function updateDots() {
           var dots = dotsCon.querySelectorAll(".dot");
           dots.forEach(function (d, i) {
             d.className =
@@ -1340,40 +1386,28 @@
                 ? "bg-brand-accent w-7"
                 : "bg-white/25 w-2 hover:bg-white/50");
           });
-          if (cur >= total + clone) {
-            setTimeout(function () {
-              track.style.transition = "none";
-              cur = clone + (cur - (total + clone));
-              track.style.transform = "translateX(-" + cur * pct + "%)";
-            }, 700);
-          } else if (cur <= 0) {
-            setTimeout(function () {
-              track.style.transition = "none";
-              cur = total + cur;
-              track.style.transform = "translateX(-" + cur * pct + "%)";
-            }, 700);
-          }
         }
 
-        function next() {
-          cur += visible;
-          idx = (idx + visible) % total;
-          update();
+        // ── Auto-advance ──
+        var autoTimer = null,
+          restartTimer = null;
+        function startAuto() {
+          stopAuto();
+          autoTimer = setInterval(next, duration);
         }
-        function prev() {
-          cur -= visible;
-          idx = (idx - visible + total) % total;
-          update();
+        function stopAuto() {
+          clearInterval(autoTimer);
+          autoTimer = null;
+          clearTimeout(restartTimer);
+          restartTimer = null;
+        }
+        function resetAuto() {
+          stopAuto();
+          restartTimer = setTimeout(startAuto, cooldown);
         }
 
         makeDots();
-        var autoTimer = setInterval(next, duration);
-        function resetAuto() {
-          clearInterval(autoTimer);
-          setTimeout(function () {
-            autoTimer = setInterval(next, duration);
-          }, cooldown);
-        }
+        startAuto();
 
         prevBtn.addEventListener("click", function () {
           prev();
@@ -1385,12 +1419,8 @@
         });
 
         var section = container.parentElement.parentElement;
-        section.addEventListener("mouseenter", function () {
-          clearInterval(autoTimer);
-        });
-        section.addEventListener("mouseleave", function () {
-          autoTimer = setInterval(next, duration);
-        });
+        section.addEventListener("mouseenter", stopAuto);
+        section.addEventListener("mouseleave", startAuto);
       }
     </script>
   </body>
