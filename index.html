@@ -134,13 +134,13 @@
   <body
     class="bg-brand-warm text-brand-primary antialiased selection:bg-brand-accent selection:text-white flex flex-col min-h-screen"
   >
-    <div id="scroll-progress"></div>
+    <div id="scroll-progress" aria-hidden="true"></div>
 
     <!-- ─── HEADER ─── -->
     <header id="main-header" class="fixed w-full z-50 transition-all duration-500 py-6 bg-transparent">
   <div class="container mx-auto px-6 flex justify-between items-center">
-    <a href="/" class="font-serif text-2xl font-bold tracking-tight cursor-pointer z-50 text-brand-dark">Alison Goldstein</a>
-    <nav class="hidden md:flex items-center gap-8">
+    <a href="/" class="font-serif text-2xl font-bold tracking-tight cursor-pointer z-50 text-brand-dark whitespace-nowrap shrink-0">Alison Goldstein</a>
+    <nav class="hidden lg:flex items-center gap-8">
       <div id="desktop-nav-links" class="flex gap-8">
         <a href="/" class="nav-link-btn text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:text-brand-accent relative group cursor-pointer text-brand-accent">Home<span class="absolute -bottom-2 left-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full w-full"></span></a>
         <a href="/about/" class="nav-link-btn text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:text-brand-accent relative group cursor-pointer text-slate-600">About<span class="absolute -bottom-2 left-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full w-0"></span></a>
@@ -151,11 +151,11 @@
       </div>
       <a href="/contact/" class="ml-4 px-6 py-2.5 rounded font-semibold tracking-widest text-xs uppercase bg-brand-dark text-white hover:bg-brand-accent transition-all duration-300">Contact</a>
     </nav>
-    <button class="md:hidden p-2 z-50 cursor-pointer" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+    <button class="lg:hidden p-2 z-50 cursor-pointer" onclick="toggleMobileMenu()" aria-label="Toggle menu">
       <i data-lucide="menu" id="menu-icon" class="text-brand-dark w-6 h-6"></i>
     </button>
   </div>
-  <div id="mobile-menu" class="fixed inset-0 bg-white z-40 transform transition-transform duration-500 ease-in-out translate-x-full md:hidden flex flex-col items-center justify-center gap-1">
+  <div id="mobile-menu" class="fixed inset-0 bg-white z-40 transform transition-transform duration-500 ease-in-out translate-x-full lg:hidden flex flex-col items-center justify-center gap-1">
     <div id="mobile-nav-links" class="flex flex-col gap-7 text-center mb-10">
       <a href="/" class="text-2xl font-serif cursor-pointer text-brand-accent">Home</a>
       <a href="/about/" class="text-2xl font-serif cursor-pointer text-brand-dark hover:text-brand-accent">About</a>
@@ -372,7 +372,7 @@
           </div>
 
           <div
-            class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto cms-stagger"
+            class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto"
             id="quick-services-grid"
             data-cms-list="services"
             data-cms-label="Service Cards"
@@ -382,7 +382,7 @@
           >
             <template data-cms-template>
               <div
-                class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal"
+                class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:shadow-2xl overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal"
               >
                 <div class="service-ghost-num">{{@nn}}</div>
                 <i
@@ -405,7 +405,7 @@
               </div>
             </template>
 
-              <div data-cms-item="0"                 class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal"
+              <div data-cms-item="0"                 class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:shadow-2xl overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal"
               >
                 <div class="service-ghost-num">01</div>
                 <i
@@ -428,7 +428,7 @@
               </div>
             
 
-              <div data-cms-item="1"                 class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal"
+              <div data-cms-item="1"                 class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:shadow-2xl overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal"
               >
                 <div class="service-ghost-num">02</div>
                 <i
@@ -451,7 +451,7 @@
               </div>
             
 
-              <div data-cms-item="2"                 class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal"
+              <div data-cms-item="2"                 class="relative bg-brand-dark text-white p-8 rounded-2xl shadow-xl hover:shadow-2xl overflow-hidden group border border-white/5 hover:border-brand-accent/30 reveal"
               >
                 <div class="service-ghost-num">03</div>
                 <i
@@ -1356,13 +1356,13 @@
         }
 
         function next() {
-          cur += visible;
-          idx = (idx + visible) % total;
+          cur += 1;
+          idx = (idx + 1) % total;
           update();
         }
         function prev() {
-          cur -= visible;
-          idx = (idx - visible + total) % total;
+          cur -= 1;
+          idx = (idx - 1 + total) % total;
           update();
         }
 

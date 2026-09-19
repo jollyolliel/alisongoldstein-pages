@@ -121,11 +121,11 @@
   <body
     class="bg-brand-cream text-brand-primary antialiased selection:bg-brand-accent selection:text-white flex flex-col min-h-screen"
   >
-    <div id="scroll-progress"></div>
+    <div id="scroll-progress" aria-hidden="true"></div>
     <header id="main-header" class="fixed w-full z-50 transition-all duration-500 py-4 header-scrolled">
   <div class="container mx-auto px-6 flex justify-between items-center">
-    <a href="/" class="font-serif text-2xl font-bold tracking-tight cursor-pointer z-50 text-brand-dark">Alison Goldstein</a>
-    <nav class="hidden md:flex items-center gap-8">
+    <a href="/" class="font-serif text-2xl font-bold tracking-tight cursor-pointer z-50 text-brand-dark whitespace-nowrap shrink-0">Alison Goldstein</a>
+    <nav class="hidden lg:flex items-center gap-8">
       <div id="desktop-nav-links" class="flex gap-8">
         <a href="/" class="nav-link-btn text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:text-brand-accent relative group cursor-pointer text-slate-600">Home<span class="absolute -bottom-2 left-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full w-0"></span></a>
         <a href="/about/" class="nav-link-btn text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:text-brand-accent relative group cursor-pointer text-slate-600">About<span class="absolute -bottom-2 left-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full w-0"></span></a>
@@ -136,11 +136,11 @@
       </div>
       <a href="/contact/" class="ml-4 px-6 py-2.5 rounded font-semibold tracking-widest text-xs uppercase bg-brand-dark text-white hover:bg-brand-accent transition-all duration-300">Contact</a>
     </nav>
-    <button class="md:hidden p-2 z-50 cursor-pointer" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+    <button class="lg:hidden p-2 z-50 cursor-pointer" onclick="toggleMobileMenu()" aria-label="Toggle menu">
       <i data-lucide="menu" id="menu-icon" class="text-brand-dark w-6 h-6"></i>
     </button>
   </div>
-  <div id="mobile-menu" class="fixed inset-0 bg-white z-40 transform transition-transform duration-500 ease-in-out translate-x-full md:hidden flex flex-col items-center justify-center gap-1">
+  <div id="mobile-menu" class="fixed inset-0 bg-white z-40 transform transition-transform duration-500 ease-in-out translate-x-full lg:hidden flex flex-col items-center justify-center gap-1">
     <div id="mobile-nav-links" class="flex flex-col gap-7 text-center mb-10">
       <a href="/" class="text-2xl font-serif cursor-pointer text-brand-dark hover:text-brand-accent">Home</a>
       <a href="/about/" class="text-2xl font-serif cursor-pointer text-brand-dark hover:text-brand-accent">About</a>
