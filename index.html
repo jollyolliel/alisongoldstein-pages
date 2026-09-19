@@ -1232,11 +1232,14 @@
         var duration = 9000;
         var visible = 3;
         var cooldown = 10000;
+        var EASE = "transform 700ms cubic-bezier(0.4,0,0.2,1)";
 
         if (!total || !track || !dotsCon) return;
 
         container.style.userSelect = "none";
-        var clone = visible;
+        // Clone a full set on each side so multi-slide drags never run past
+        // the buffer into blank space (data-cms-min guarantees total >= visible).
+        var clone = total;
         for (var i = 0; i < clone; i++) {
           track.insertBefore(slides[total - clone + i].cloneNode(true), slides[0]);
         }
@@ -1244,43 +1247,91 @@
           track.appendChild(slides[j].cloneNode(true));
         }
 
-        var totalSlides = total + 2 * clone;
+        // Real slides live at track indices [clone .. clone+total-1].
         var cur = clone;
         var idx = 0;
         var pct = 100 / visible;
-        track.style.transform = "translateX(-" + cur * pct + "%)";
+        var animating = false; // lock: prevents overshooting the clone buffer
+        setTransform(false);
 
+        function setTransform(withTransition) {
+          track.style.transition = withTransition ? EASE : "none";
+          track.style.transform = "translateX(-" + cur * pct + "%)";
+        }
+
+        // Seamless wrap: after a step lands on a clone, snap back with no
+        // transition. Driven by transitionend so timers can never stack.
+        track.addEventListener("transitionend", function (e) {
+          if (e.propertyName !== "transform") return;
+          if (cur >= total + clone) {
+            cur -= total;
+            setTransform(false);
+            void track.offsetWidth; // force reflow so next transition runs
+          } else if (cur < clone) {
+            cur += total;
+            setTransform(false);
+            void track.offsetWidth;
+          }
+          animating = false;
+        });
+
+        function step(dir) {
+          if (animating || !dir) return; // ignore until current move + snap finishes
+          animating = true;
+          cur += dir;
+          idx = (((idx + dir) % total) + total) % total;
+          setTransform(true);
+          updateDots();
+        }
+        function next() {
+          step(1);
+        }
+        function prev() {
+          step(-1);
+        }
+
+        // ── Drag / swipe ──
         var isDrag = false,
           startX = 0,
           curTx = 0,
-          prevTx = 0,
           animID;
 
         function getX(e) {
-          return e.type.includes("mouse") ? e.pageX : e.touches[0].clientX;
+          return e.type.indexOf("mouse") !== -1 ? e.pageX : e.touches[0].clientX;
         }
         function onDragStart(e) {
+          if (animating) return;
           isDrag = true;
           startX = getX(e);
           curTx = 0;
-          prevTx = 0;
-          clearInterval(autoTimer);
+          stopAuto();
           animID = requestAnimationFrame(dragAnim);
         }
+        function slideW() {
+          return track.offsetWidth / visible;
+        }
+        // Furthest a single drag may travel while staying inside the clones.
+        function maxSlides() {
+          return Math.max(1, total - visible + 1);
+        }
         function onDragMove(e) {
-          if (isDrag) curTx = prevTx + getX(e) - startX;
+          if (!isDrag) return;
+          var limit = maxSlides() * slideW();
+          curTx = Math.max(-limit, Math.min(limit, getX(e) - startX));
         }
         function onDragEnd() {
           if (!isDrag) return;
           isDrag = false;
           cancelAnimationFrame(animID);
-          var moved = curTx - prevTx;
-          if (moved < -80) {
-            next();
-          } else if (moved > 80) {
-            prev();
-          } else {
-            update();
+          if (Math.abs(curTx) > 10) {
+            // Always settle forward in the drag direction: round the partial
+            // slide up so the release never snaps back against the drag.
+            var n = Math.ceil(Math.abs(curTx) / slideW());
+            n = Math.min(n, maxSlides());
+            step(curTx < 0 ? n : -n);
+          } else if (curTx !== 0) {
+            animating = true; // animate back to rest; transitionend clears lock
+            setTransform(true);
           }
           resetAuto();
         }
@@ -1290,18 +1341,16 @@
           var base = -(cur * pct);
           var drag = (curTx / track.offsetWidth) * 100;
           track.style.transform = "translateX(" + (base + drag) + "%)";
-          requestAnimationFrame(dragAnim);
+          animID = requestAnimationFrame(dragAnim);
         }
 
         container.addEventListener("mousedown", onDragStart);
-        container.addEventListener("touchstart", onDragStart);
-        container.addEventListener("mousemove", onDragMove);
-        container.addEventListener("touchmove", onDragMove, { passive: true });
-        container.addEventListener("mouseup", onDragEnd);
-        container.addEventListener("touchend", onDragEnd);
-        container.addEventListener("mouseleave", function () {
-          if (isDrag) onDragEnd();
-        });
+        container.addEventListener("touchstart", onDragStart, { passive: true });
+        // move/up on document so dragging outside the container still tracks
+        document.addEventListener("mousemove", onDragMove);
+        document.addEventListener("touchmove", onDragMove, { passive: true });
+        document.addEventListener("mouseup", onDragEnd);
+        document.addEventListener("touchend", onDragEnd);
 
         function makeDots() {
           dotsCon.innerHTML = "";
@@ -1315,11 +1364,12 @@
                   : "bg-white/25 w-2 hover:bg-white/50");
               d.setAttribute("aria-label", "Go to testimonial " + (i + 1));
               d.onclick = function () {
+                if (animating || i === idx) return;
+                animating = true;
                 cur = i + clone;
                 idx = i;
-                prevTx = 0;
-                curTx = 0;
-                update();
+                setTransform(true);
+                updateDots();
                 resetAuto();
               };
               dotsCon.appendChild(d);
@@ -1327,11 +1377,7 @@
           }
         }
 
-        function update() {
-          track.style.transition = "transform 700ms cubic-bezier(0.4,0,0.2,1)";
-          track.style.transform = "translateX(-" + cur * pct + "%)";
-          prevTx = 0;
-          curTx = 0;
+        function updateDots() {
           var dots = dotsCon.querySelectorAll(".dot");
           dots.forEach(function (d, i) {
             d.className =
@@ -1340,40 +1386,28 @@
                 ? "bg-brand-accent w-7"
                 : "bg-white/25 w-2 hover:bg-white/50");
           });
-          if (cur >= total + clone) {
-            setTimeout(function () {
-              track.style.transition = "none";
-              cur = clone + (cur - (total + clone));
-              track.style.transform = "translateX(-" + cur * pct + "%)";
-            }, 700);
-          } else if (cur <= 0) {
-            setTimeout(function () {
-              track.style.transition = "none";
-              cur = total + cur;
-              track.style.transform = "translateX(-" + cur * pct + "%)";
-            }, 700);
-          }
         }
 
-        function next() {
-          cur += 1;
-          idx = (idx + 1) % total;
-          update();
+        // ── Auto-advance ──
+        var autoTimer = null,
+          restartTimer = null;
+        function startAuto() {
+          stopAuto();
+          autoTimer = setInterval(next, duration);
         }
-        function prev() {
-          cur -= 1;
-          idx = (idx - 1 + total) % total;
-          update();
+        function stopAuto() {
+          clearInterval(autoTimer);
+          autoTimer = null;
+          clearTimeout(restartTimer);
+          restartTimer = null;
+        }
+        function resetAuto() {
+          stopAuto();
+          restartTimer = setTimeout(startAuto, cooldown);
         }
 
         makeDots();
-        var autoTimer = setInterval(next, duration);
-        function resetAuto() {
-          clearInterval(autoTimer);
-          setTimeout(function () {
-            autoTimer = setInterval(next, duration);
-          }, cooldown);
-        }
+        startAuto();
 
         prevBtn.addEventListener("click", function () {
           prev();
@@ -1385,12 +1419,8 @@
         });
 
         var section = container.parentElement.parentElement;
-        section.addEventListener("mouseenter", function () {
-          clearInterval(autoTimer);
-        });
-        section.addEventListener("mouseleave", function () {
-          autoTimer = setInterval(next, duration);
-        });
+        section.addEventListener("mouseenter", stopAuto);
+        section.addEventListener("mouseleave", startAuto);
       }
     </script>
   </body>
